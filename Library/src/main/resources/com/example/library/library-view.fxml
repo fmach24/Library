@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      spacing="10" alignment="CENTER" prefWidth="600" prefHeight="400">
+    <!-- Nagłówek aplikacji -->
+    <Label text="Biblioteka" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+
+    <!-- Tabela książek -->
+    <TableView fx:id="booksTable" prefWidth="550">
+        <columns>
+            <TableColumn text="ID" fx:id="idColumn" prefWidth="50" />
+            <TableColumn text="Tytuł" fx:id="titleColumn" prefWidth="250" />
+            <TableColumn text="Autor" fx:id="authorColumn" prefWidth="200" />
+        </columns>
+    </TableView>
+
+    <!-- Sekcja dodawania nowej książki -->
+    <HBox spacing="10" alignment="CENTER">
+        <TextField fx:id="titleField" promptText="Tytuł książki" />
+        <TextField fx:id="authorField" promptText="Autor książki" />
+        <Button text="Dodaj książkę" fx:id="addBookButton" />
+    </HBox>
+
+    <!-- Przycisk usuwania książki -->
+    <Button text="Usuń wybraną książkę" fx:id="deleteBookButton" />
+</VBox>
