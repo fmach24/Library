@@ -12,29 +12,15 @@ import java.sql.SQLException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("library-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("log-in-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 500, 300);
-        stage.setTitle("Library");
+        stage.setTitle("Log in");
         stage.setScene(scene);
         stage.show();
     }
 
     public static void main(String[] args) {
-        launch();
-        var url = "jdbc:sqlite:my.db";
-
-        // SQL statement for creating a new table
-//        var sql = "DELETE FROM WAREHOUSES WHERE NAME = 'test1'";
-        var sql = "INSERT INTO WAREHOUSES(name,capacity) VALUES('test1', 2*10)";
-   //     "INSERT INTO WAREHOUSES(name,capacity) VALUES('test1', 2*10)"
-
-        try (var conn = DriverManager.getConnection(url);
-             var stmt = conn.createStatement()) {
-            // create a new table
-            stmt.execute(sql);
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-
+        launch(args);
     }
+
 }

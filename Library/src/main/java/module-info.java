@@ -6,4 +6,6 @@ module com.example.library {
 
     opens com.example.library to javafx.fxml;
     exports com.example.library;
+    exports com.example.library.models;
+    opens com.example.library.models to javafx.fxml;
 }

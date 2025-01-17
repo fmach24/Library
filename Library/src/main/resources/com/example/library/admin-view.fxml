@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
 
-<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.library.LibraryController"
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
       spacing="10" alignment="CENTER" prefWidth="600" prefHeight="400">
     <!-- Nagłówek aplikacji -->
     <Label text="Biblioteka" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
