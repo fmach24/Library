@@ -1,60 +1,54 @@
 package com.example.library.models;
 
 import javafx.beans.property.*;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.StringProperty;
+
+import java.util.UUID;
 
 public class Book {
-    private final IntegerProperty id;
-    private final StringProperty title;
-    private final StringProperty author;
-    private final StringProperty genre;
-    private final IntegerProperty length;
+    public UUID id;
+    public StringProperty title;
+    public StringProperty author;
+    public StringProperty genre;
+    public StringProperty amount;
 
-    public Book(int id, String title, String author, String genre, int length) {
-        this.id = new SimpleIntegerProperty(id);
+    public Book(UUID id, String title, String author, String genre, String amount) {
+
+        this.id = id;
         this.title = new SimpleStringProperty(title);
         this.author = new SimpleStringProperty(author);
         this.genre = new SimpleStringProperty(genre);
-        this.length = new SimpleIntegerProperty(length);
-
+        this.amount = new SimpleStringProperty(amount);
+    }
+    public Book(){
     }
 
-    public int getId() {
-        return id.get();
-    }
-
-    public IntegerProperty idProperty() {
-        return id;
-    }
-
-    public String getTitle() {
-        return title.get();
-    }
-
+//    public String getTitle() {
+//        return title.get();
+//    }
+//
+//    public String getAuthor() {
+//        return author.get();
+//    }
+//
+//    public String getGenre() {
+//        return genre.get();
+//    }
+//
+//    public int getAmount() {
+//        return amount.get();
+//    }
     public StringProperty titleProperty() {
         return title;
     }
-
-    public String getAuthor() {
-        return author.get();
-    }
-
     public StringProperty authorProperty() {
         return author;
     }
-
-    public String getGenre() {
-        return genre.get();
-    }
-
     public StringProperty genreProperty() {
         return genre;
-
     }
-    public int getlength() {
-        return id.get();
-    }
-
-    public IntegerProperty lengthProperty() {
-        return id;
+    public StringProperty amountProperty() {
+        return amount;
     }
 }

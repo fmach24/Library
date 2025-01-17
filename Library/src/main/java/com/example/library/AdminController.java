@@ -25,6 +25,14 @@
 //    private Button addBookButton;
 //    @FXML
 //    private Button deleteBookButton;
+//    @FXML
+//    private TextField titleField;
+//    @FXML
+//    private TextField authorField;
+//    @FXML
+//    private TextField genreField;
+//    @FXML
+//    private TextField lengthField;
 //
 //    private final ObservableList<Book> books = FXCollections.observableArrayList();
 //    private int nextId = 1;
