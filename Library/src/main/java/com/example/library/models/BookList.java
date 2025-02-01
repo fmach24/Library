@@ -1,6 +1,7 @@
 package com.example.library.models;
 
 import com.example.library.Listener;
+import com.example.library.repository.BookRepository;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -13,15 +14,14 @@ public class BookList {
 
     private ObservableList<Book> books;
     private ObservableList<Book> current;
+    private BookRepository repository;
 
-    public BookList() {
+    public BookList(BookRepository repository) {
+        this.repository = repository;
 
         current = FXCollections.<Book>observableArrayList();
-        books = FXCollections.observableArrayList(
-                new Book(UUID.randomUUID(), "s", "s", "s", "2"),
-                new Book(UUID.randomUUID(), "fdffd", "ss", "gdsg", "2"),
-                new Book(UUID.randomUUID(), "sdsd", "sfdf", "sdsa", "3")
-        );
+//        List<Book> miau = BookRepository.read();
+        books = FXCollections.observableArrayList(repository.read());
         current.addAll(books);
         books.addListener(new ListChangeListener<Book>() {
             @Override
@@ -36,9 +36,10 @@ public class BookList {
         return this.current;
     }
 
-//    public void addBook(Book Book) {
-//        books.add(Book);
-//    }
+    public void addBook(Book book) {
+        book.id = repository.create(book);
+        books.add(book);
+    }
 //
 //    public void addBook(String name, String email, String phone, String address, String ID, String type, int credits, double scholarship, String deductionCode) {
 //        books.add(new Book(name, email, phone, address, ID, type, credits, scholarship, deductionCode));
@@ -58,9 +59,10 @@ public class BookList {
 //        return null;
 //    }
 
-//    public void remove(Book p) {
-//        this.books.remove(p);
-//    }
+    public void remove(Book book) {
+        repository.delete(book.id);
+        this.books.remove(book);
+    }
 //
 //    public void remove(List<Book> selectedItems) {
 //        this.books.removeAll(selectedItems);

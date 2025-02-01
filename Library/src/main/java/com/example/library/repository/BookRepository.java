@@ -1,8 +1,11 @@
 package com.example.library.repository;
 
 import com.example.library.models.Book;
+import javafx.beans.property.StringProperty;
 
+import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,20 +13,159 @@ import java.util.UUID;
 
 public class BookRepository {
 
-        public void create (Book book){
 
-        }
-        public Book read (int id){
-            return new Book(UUID.randomUUID(),"s","s","s","2");
-        }
-        public List<Book> read (){
-            return new ArrayList<Book>();
-        }
-        public void update (Book book){
-        }
-        public void delete (int id){
+    public int create(Book book) {
+        String sql = "INSERT INTO books(title, author, genre, publisher, isRented) VALUES( ?, ?, ?, ?, ?) RETURNING id";
+        try (var conn = DriverManager.getConnection("jdbc:sqlite:my.db");
+             var pstmt = conn.prepareStatement(sql)) {
+//
+            pstmt.setString(1, book.title.get());
+            pstmt.setString(2, book.author.get());
+            pstmt.setString(3, book.genre.get());
+            pstmt.setString(4, book.publisher.get());
+            pstmt.setBoolean(5, book.isRented.get());
+            var rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("id");
+            }
 
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
+        return -1;
+    }
+
+
+    public Book read(int id) {
+        String sql = "SELECT * FROM books WHERE id = ?";
+        try (var conn = DriverManager.getConnection("jdbc:sqlite:my.db");
+             var pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, id);
+            var rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return new Book(rs.getInt("id"), rs.getString("title"), rs.getString("author"), rs.getString("genre"), rs.getString("publisher"), rs.getBoolean("isRented"), rs.getDateTime("expiration"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
+
+    public List<Book> read() {
+        List<Book> books = new ArrayList<Book>();
+        String sql = "SELECT * FROM Books";
+        try (var conn = DriverManager.getConnection("jdbc:sqlite:my.db");
+             var stmt = conn.createStatement();
+             var rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                books.add(new Book(rs.getInt("id"), rs.getString("title"), rs.getString("author"), rs.getString("genre"), rs.getString("publisher"), rs.getBoolean("isRented"), rs.getDateTime("expiration")));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return books;
+    }
+
+    public void update(Book book) {
+        String sql = "UPDATE Books SET title = ?, author = ?, genre = ?, publisher = ? WHERE id = ?";
+        try (var conn = DriverManager.getConnection("jdbc:sqlite:my.db");
+             var pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, book.title.get());
+            pstmt.setString(2, book.author.get());
+            pstmt.setString(3, book.genre.get());
+            pstmt.setString(4, book.publisher.get());
+            pstmt.setInt(5, book.id);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+
+    //TODO DODAC UPDATE DO STANU WYPOZYCZENIA (WYPOZYCZ - ODDAJ)
+
+
+
+    public void delete(int id) {
+        String sql = "DELETE FROM Books WHERE id = ?";
+        try (var conn = DriverManager.getConnection("jdbc:sqlite:my.db");
+             var pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, id);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+
+
+
+//        public void create (Book book){
+//
+//        }
+//        public Book read (int id){
+//            return new Book(UUID.randomUUID(),"s","s","s","2");
+//        }
+//        public List<Book> read (){
+//
+//            return new ArrayList<Book>();
+//        }
+//
+
+//        public void update (Book book){
+//            var url = "jdbc:sqlite:my.db";
+//
+//
+//            StringProperty amount = book.amount;
+////            id = id.toString();
+//
+//
+//            try (Connection conn = DriverManager.getConnection(url)){
+//
+//            }
+//                String sql = "UPDATE INTO Books (id, title, author, genre, amount) VALUES (?,?,?,?,?)";
+//                PreparedStatement stmt = conn.prepareStatement(sql);
+//                stmt.setInt(1, title);
+//                stmt.setString(2, author);
+//                stmt.setString(3, genre);
+//                stmt.setString(4, amount);
+//                stmt.setInt(5, amount);
+//            } catch (SQLException e) {
+//                System.out.println(e.getMessage());
+//            }
+//
+//
+//
+//
+//            try (Connection conn = DriverManager.getConnection(StartApplication.db_url)){
+//
+//                //TODO: make time of rental based on points.
+//                String query = "INSERT INTO book_rental (book_id, user_id, deadline) VALUES (?,?,?)";
+//                PreparedStatement stmt = conn.prepareStatement(sql);
+//                stmt.setInt(1, b.getId());
+//                stmt.setInt(2, user.getId());
+//                stmt.setDate(3, Date.valueOf(deadline));
+//                LocalDate deadline = LocalDate.now().plusDays(LibraryRules.getBorrowPeriodLength(user.getPoints()));
+//                stmt.setDate(3, Date.valueOf(deadline));
+//
+//
+//            }
+
+
+//        public void delete (int id){
+//                var url = "jdbc:sqlite:my.db";
+////                id.toString();
+//                var sql = "DELETE FROM WAREHOUSES WHERE ID = $id";
+//
+//                try (var conn = DriverManager.getConnection(url);
+//                     var stmt = conn.createStatement()) {
+//                    stmt.execute(sql);
+//                } catch (SQLException e) {
+//                    System.out.println(e.getMessage());
+//                }
+//        }
 
 
 

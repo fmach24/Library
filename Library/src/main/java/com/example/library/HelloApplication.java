@@ -6,8 +6,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class HelloApplication extends Application {
     @Override
@@ -20,6 +22,18 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) {
+
+        String sqlBook =
+                "CREATE TABLE IF NOT EXISTS Books (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL, author TEXT NOT NULL, genre TEXT, publisher TEXT, isRented boolean);";
+
+        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:my.db");
+             Statement stmt = conn.createStatement()) {
+            stmt.execute(sqlBook);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+
         launch(args);
     }
 
