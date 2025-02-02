@@ -22,7 +22,7 @@
             </image>
          </ImageView>
            <TextField fx:id="titleField" alignment="TOP_CENTER" layoutX="168.0" layoutY="34.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="283.0" promptText="Tytuł książki" style="-fx-background-color: #FFF6DA;" />
-         <Button fx:id="deleteBookButton" layoutX="500.0" layoutY="34.0" style="-fx-background-color: F4D793;" text="Wypożycz">
+         <Button fx:id="deleteBookButton" layoutX="500.0" layoutY="34.0" style="-fx-background-color: F4D793;" text="Wyszukaj">
             <effect>
                <InnerShadow height="67.79" radius="32.81" width="65.45">
                   <color>
