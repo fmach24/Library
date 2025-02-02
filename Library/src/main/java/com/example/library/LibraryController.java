@@ -6,9 +6,13 @@ import com.example.library.repository.BookRepository;
 import javafx.fxml.FXML;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
@@ -34,21 +38,41 @@ public class LibraryController {
 //    private final ObservableList<Book> books = FXCollections.observableArrayList();
 
     @FXML
-    public void initialize() {
+    public void initialize() throws IOException, IOException {
         titleColumn.setCellValueFactory(cdf -> cdf.getValue().titleProperty());
         authorColumn.setCellValueFactory(cdf -> cdf.getValue().authorProperty());
 //        amountColumn.setCellValueFactory(cdf -> cdf.getValue().amountProperty());
+
+
+        //Obsluga table view
+        booksTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+               System.out.println(newSelection.genre);
+                Stage stage = new Stage();
+                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("log-in-view.fxml"));//TODO dodac poprawny fxml
+                Scene scene = null;
+                try {
+                    scene = new Scene(fxmlLoader.load(), 600, 400);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+//                BookController ctrl = fxmlLoader.getController();
+//                ctrl.setMainController(this);
+                stage.setTitle("Informacje o książce");
+                stage.setScene(scene);
+                stage.show();
+            }
+        });
+
 
         bookRepository = new BookRepository();
         bookList = new BookList(bookRepository);
         booksTable.setItems(bookList.getCurrentList());
 
-        // Przypisanie listy książek do tabeli
-
 
 
 //        bookRepository.delete(bookList.getCurrentList().getFirst().id);
-        Book book1 = new Book("dfgdf","32", "dsdds", "fsd", false);
+        Book book1 = new Book("miua","dss", "hgss", "fsd", false);
         bookList.addBook(book1);
 //        bookList.remove(book1);
 

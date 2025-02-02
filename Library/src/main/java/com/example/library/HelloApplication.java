@@ -24,7 +24,7 @@ public class HelloApplication extends Application {
     public static void main(String[] args) {
 
         String sqlBook =
-                "CREATE TABLE IF NOT EXISTS Books (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL, author TEXT NOT NULL, genre TEXT, publisher TEXT, isRented boolean);";
+                "CREATE TABLE IF NOT EXISTS Books (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL, author TEXT NOT NULL, genre TEXT, publisher TEXT, isRented boolean, expiration datetime);";
 
         try (Connection conn = DriverManager.getConnection("jdbc:sqlite:my.db");
              Statement stmt = conn.createStatement()) {

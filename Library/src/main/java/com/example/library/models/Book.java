@@ -27,14 +27,22 @@ public class Book {
         this.isRented = new SimpleBooleanProperty(isRented);
         this.expiration = new SimpleObjectProperty<>(expiration);
     }
-    public Book(String title, String author, String genre,  String publisher, boolean isRented, LocalDateTime expiration) {
+    public Book(String title, String author, String genre,  String publisher, boolean isRented) {
 
         this.title = new SimpleStringProperty(title);
         this.author = new SimpleStringProperty(author);
         this.genre = new SimpleStringProperty(genre);
         this.publisher = new SimpleStringProperty(publisher);
         this.isRented = new SimpleBooleanProperty(isRented);
-        this.expiration = new SimpleObjectProperty<>(expiration);
+    }
+    public Book(int id, String title, String author, String genre,  String publisher, boolean isRented) {
+
+        this.id = id;
+        this.title = new SimpleStringProperty(title);
+        this.author = new SimpleStringProperty(author);
+        this.genre = new SimpleStringProperty(genre);
+        this.publisher = new SimpleStringProperty(publisher);
+        this.isRented = new SimpleBooleanProperty(isRented);
     }
     public Book(){
     }

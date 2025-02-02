@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -43,7 +45,11 @@ public class BookRepository {
             pstmt.setInt(1, id);
             var rs = pstmt.executeQuery();
             if (rs.next()) {
-                return new Book(rs.getInt("id"), rs.getString("title"), rs.getString("author"), rs.getString("genre"), rs.getString("publisher"), rs.getBoolean("isRented"), rs.getDateTime("expiration"));
+                //TODO nie bedzie działac gdy jest null trzeba zrobic if czy cos tego typu
+                String fakeDateTime = rs.getString("expiration");
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                LocalDateTime realDateTime = LocalDateTime.parse(fakeDateTime, formatter);
+                return new Book(rs.getInt("id"), rs.getString("title"), rs.getString("author"), rs.getString("genre"), rs.getString("publisher"), rs.getBoolean("isRented"), realDateTime);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -59,7 +65,20 @@ public class BookRepository {
              var stmt = conn.createStatement();
              var rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                books.add(new Book(rs.getInt("id"), rs.getString("title"), rs.getString("author"), rs.getString("genre"), rs.getString("publisher"), rs.getBoolean("isRented"), rs.getDateTime("expiration")));
+                if(rs.getString("expiration")!=null) {
+                    String fakeDateTime = rs.getString("expiration");
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                    LocalDateTime realDateTime = LocalDateTime.parse(fakeDateTime, formatter);
+                    Book book = new Book(rs.getInt("id"), rs.getString("title"), rs.getString("author"), rs.getString("genre"), rs.getString("publisher"), rs.getBoolean("isRented"), realDateTime);
+                    books.add(book);
+                }
+                else {
+                    Book book = new Book(rs.getInt("id"), rs.getString("title"), rs.getString("author"), rs.getString("genre"), rs.getString("publisher"), rs.getBoolean("isRented"));
+                    books.add(book);
+                }
+//                System.out.println(realDateTime);
+//                LocalDateTime miau = LocalDateTime.parse("2004-02-23 2:21:34");
+
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
