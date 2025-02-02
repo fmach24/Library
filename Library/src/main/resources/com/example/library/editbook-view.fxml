@@ -14,7 +14,6 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="349.0" prefWidth="496.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane prefHeight="137.0" prefWidth="496.0" style="-fx-background-color: #102C57; -fx-border-color: #FEFAF6; -fx-border-radius: 50; -fx-border-style: dotted; -fx-border-width: 3;">

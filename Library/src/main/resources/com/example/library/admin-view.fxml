@@ -17,16 +17,32 @@
 <VBox alignment="CENTER" prefHeight="442.0" prefWidth="602.0" spacing="10" style="-fx-background-color: #A94A4A;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.library.AdminController">
    <Pane prefHeight="117.0" prefWidth="602.0">
       <children>
-         <ImageView blendMode="DARKEN" fitHeight="133.0" fitWidth="126.0" layoutX="26.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+         <ImageView blendMode="DARKEN" fitHeight="133.0" fitWidth="126.0" layoutX="175.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@Zrzut ekranu 2025-02-01 175314.png" />
             </image>
          </ImageView>
-         <ImageView blendMode="DARKEN" fitHeight="106.0" fitWidth="108.0" layoutX="480.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+         <ImageView blendMode="DARKEN" fitHeight="106.0" fitWidth="108.0" layoutX="329.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@Zrzut ekranu 2025-02-02 141549.png" />
             </image>
          </ImageView>
+         <Button fx:id="addBookButton1" layoutX="522.0" layoutY="6.0" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #889E73;" text="Wyloguj">
+            <effect>
+               <DropShadow>
+                  <input>
+                     <InnerShadow>
+                        <color>
+                           <Color red="0.9684210419654846" green="0.9684210419654846" blue="0.9684210419654846" />
+                        </color>
+                     </InnerShadow>
+                  </input>
+                  <color>
+                     <Color red="1.0" green="1.0" blue="1.0" />
+                  </color>
+               </DropShadow>
+            </effect>
+         </Button>
       </children>
    </Pane>
 

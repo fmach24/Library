@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="340.0" prefWidth="423.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="112.0" prefWidth="423.0" style="-fx-background-color: #B99470; -fx-border-color: #FEFAE0; -fx-border-radius: 50; -fx-border-style: dotted; -fx-border-width: 2;">
+         <children>
+            <ImageView blendMode="DARKEN" fitHeight="128.0" fitWidth="132.0" layoutX="153.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Zrzut ekranu 2025-02-01 175314.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane prefHeight="190.0" prefWidth="423.0" style="-fx-background-color: #C0C78C;">
+         <children>
+            <Label layoutX="67.0" layoutY="26.0" text="Tytuł">
+               <font>
+                  <Font name="Gill Sans MT Bold Italic" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="57.0" layoutY="97.0" text="Gatunek">
+               <font>
+                  <Font name="Gill Sans MT Bold Italic" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="43.0" layoutY="135.0" text="Wydawnictwo">
+               <font>
+                  <Font name="Gill Sans MT Bold Italic" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="67.0" layoutY="62.0" text="Autor">
+               <font>
+                  <Font name="Gill Sans MT Bold Italic" size="13.0" />
+               </font>
+            </Label>
+            <TextField layoutX="179.0" layoutY="21.0" style="-fx-background-color: #FEFAE0; -fx-border-radius: 30; -fx-border-color: #FFE6A9;" />
+            <TextField layoutX="179.0" layoutY="57.0" style="-fx-background-color: #FEFAE0; -fx-border-radius: 30; -fx-border-color: #FFE6A9;" />
+            <TextField layoutX="179.0" layoutY="91.0" style="-fx-background-color: #FEFAE0; -fx-border-color: #FFE6A9; -fx-border-radius: 30;" />
+            <TextField layoutX="179.0" layoutY="130.0" style="-fx-background-color: #FEFAE0; -fx-border-color: #FFE6A9; -fx-border-radius: 10;" />
+         </children>
+      </Pane>
+      <Pane prefHeight="37.0" prefWidth="423.0" style="-fx-background-color: #A6B37D; -fx-border-color: #FEFAE0; -fx-border-width: 2; -fx-border-radius: 22; -fx-border-style: dotted;">
+         <children>
+            <Button layoutX="188.0" layoutY="6.0" mnemonicParsing="false" style="-fx-background-color: #FEFAE0;" text="Dodaj">
+               <effect>
+                  <DropShadow height="49.07" radius="24.619999999999997" spread="0.18" width="51.41">
+                     <input>
+                        <InnerShadow choke="0.15" height="39.77" radius="18.200000000000003" width="35.03">
+                           <color>
+                              <Color red="0.44195905327796936" green="0.4736842215061188" blue="0.4192982316017151" />
+                           </color>
+                        </InnerShadow>
+                     </input>
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</VBox>
