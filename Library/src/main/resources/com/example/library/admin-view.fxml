@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 
-<VBox alignment="CENTER" prefHeight="400" prefWidth="602.0" spacing="10" style="-fx-background-color: #A94A4A;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER" prefHeight="400" prefWidth="602.0" spacing="10" style="-fx-background-color: #A94A4A;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" >
    <Pane prefHeight="332.0" prefWidth="602.0">
       <children>
          <ImageView blendMode="DARKEN" fitHeight="106.0" fitWidth="108.0" layoutX="26.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">

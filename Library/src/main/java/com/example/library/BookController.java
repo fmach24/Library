@@ -21,4 +21,12 @@ import java.util.UUID;
 
 public class BookController {
 
+    private LibraryController LibraryControllerParent;
+
+    public void setMainController(LibraryController controler){
+        LibraryControllerParent = controler;
+    }
+
+
+
 }

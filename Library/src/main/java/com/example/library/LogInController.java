@@ -23,6 +23,7 @@ public class LogInController {
     @FXML
     private Button logInButton;
 
+
     @FXML
     public void initialize(){
     }
@@ -48,14 +49,35 @@ public class LogInController {
 //            logInStage.close();
         }
         else{
+
+
+//            Stage stage = new Stage();
+//            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("library-view.fxml"));
+//            Scene scene = new Scene(fxmlLoader.load(), 700, 400);
+//            stage.setTitle("Library");
+//            stage.setScene(scene);
+//            LibraryController ctrl = fxmlLoader.getController();
+//            ctrl.setMainController(this);
+
+
             Stage stage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("library-view.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 700, 400);
-            stage.setTitle("Library");
+            Scene scene = null;
+            try {
+                scene = new Scene(fxmlLoader.load(), 600, 400);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            LibraryController ctrl = fxmlLoader.getController();
+            ctrl.setMainController(this);
+            stage.setTitle("Biblioteka");
             stage.setScene(scene);
+            stage.show();
+
             //closing login stage
-//            Stage logInStage = (Stage) logInButton.getScene().getWindow();
-//            logInStage.close();
+            Stage logInStage = (Stage) logInButton.getScene().getWindow();
+            logInStage.close();
+
         }
     }
 

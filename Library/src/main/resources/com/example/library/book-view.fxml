@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<BorderPane prefHeight="309.0" prefWidth="462.0" style="-fx-background-color: #185519;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="309.0" prefWidth="462.0" style="-fx-background-color: #185519;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.library.BookController">
    <bottom>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="235.0" prefWidth="462.0" style="-fx-background-color: #257180;" BorderPane.alignment="CENTER">
          <children>

@@ -14,7 +14,7 @@ import java.sql.Statement;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("library-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("log-in-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 500, 300);
         stage.setTitle("Log in");
         stage.setScene(scene);
