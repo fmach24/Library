@@ -14,10 +14,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 
-<VBox alignment="CENTER" prefHeight="400" prefWidth="602.0" spacing="10" style="-fx-background-color: #A94A4A;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" >
-   <Pane prefHeight="332.0" prefWidth="602.0">
+<VBox alignment="CENTER" prefHeight="442.0" prefWidth="602.0" spacing="10" style="-fx-background-color: #A94A4A;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <Pane prefHeight="117.0" prefWidth="602.0">
       <children>
-         <ImageView blendMode="DARKEN" fitHeight="106.0" fitWidth="108.0" layoutX="26.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+         <ImageView blendMode="DARKEN" fitHeight="133.0" fitWidth="126.0" layoutX="26.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@Zrzut ekranu 2025-02-01 175314.png" />
             </image>
@@ -31,7 +31,7 @@
    </Pane>
 
     <!-- Tabela książek -->
-    <TableView fx:id="booksTable" prefWidth="550" style="-fx-background-color: F4D793;">
+    <TableView fx:id="booksTable" prefHeight="262.0" prefWidth="602.0" style="-fx-background-color: F4D793;">
         <columns>
             <TableColumn fx:id="idColumn" prefWidth="50" style="-fx-background-color: #889E73;" text="ID" />
             <TableColumn fx:id="titleColumn" prefWidth="250" style="-fx-background-color: #889E73;" text="Tytuł" />
@@ -40,44 +40,26 @@
     </TableView>
 
     <!-- Sekcja dodawania nowej książki -->
-    <HBox alignment="CENTER" spacing="10">
+    <HBox alignment="CENTER" prefHeight="0.0" prefWidth="602.0" spacing="10">
         <TextField fx:id="titleField" promptText="Tytuł książki" style="-fx-background-color: #FFF6DA;" />
         <TextField fx:id="authorField" promptText="Autor książki" style="-fx-background-color: #FFF6DA;" />
+        <Button fx:id="addBookButton" style="-fx-background-color: #889E73;" text="Dodaj książkę">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.9368420839309692" green="0.8574996590614319" blue="0.5968031287193298" />
+               </color>
+               <input>
+                  <InnerShadow>
+                     <color>
+                        <Color red="0.9612690210342407" green="1.0" blue="0.6499999761581421" />
+                     </color>
+                  </InnerShadow>
+               </input>
+            </DropShadow>
+         </effect>
+      </Button>
     </HBox>
-     <Button fx:id="addBookButton" style="-fx-background-color: #889E73;" text="Dodaj książkę">
-      <effect>
-         <DropShadow>
-            <color>
-               <Color red="0.9368420839309692" green="0.8574996590614319" blue="0.5968031287193298" />
-            </color>
-            <input>
-               <InnerShadow>
-                  <color>
-                     <Color red="0.9612690210342407" green="1.0" blue="0.6499999761581421" />
-                  </color>
-               </InnerShadow>
-            </input>
-         </DropShadow>
-      </effect>
-   </Button>
-
-       <!-- Przycisk usuwania książki -->
-    <Button fx:id="deleteBookButton" style="-fx-background-color: #889E73;" text="Usuń wybraną książkę">
-      <effect>
-         <DropShadow>
-            <color>
-               <Color red="1.0" green="0.9254902005195618" blue="0.6745098233222961" />
-            </color>
-            <input>
-               <InnerShadow>
-                  <color>
-                     <Color red="0.9861728549003601" green="1.0" blue="0.585185170173645" />
-                  </color>
-               </InnerShadow>
-            </input>
-         </DropShadow>
-      </effect>
-   </Button>
    <effect>
       <SepiaTone level="0.82" />
    </effect>

@@ -5,8 +5,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
-<?import javafx.scene.effect.Light.Distant?>
-<?import javafx.scene.effect.Lighting?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
@@ -42,7 +40,7 @@
     </HBox>
    <ImageView blendMode="DARKEN" fitHeight="203.0" fitWidth="201.0" pickOnBounds="true" preserveRatio="true">
       <image>
-         <Image url="@Zrzut ekranu 2025-02-01 175314.png" />
+         <Image url="@Zrzut%20ekranu%202025-02-01%20175314.png" />
       </image></ImageView>
 
 </VBox>
