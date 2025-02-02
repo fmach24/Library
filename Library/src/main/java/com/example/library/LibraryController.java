@@ -78,10 +78,18 @@ public class LibraryController {
 
 //        bookRepository.delete(bookList.getCurrentList().getFirst().id);
 //        Book book1 = new Book("miua","dss", "hgss", "fsd", false);
-//        bookList.addBook(book1);
-        for( int i=1; i<11; i++){
-            bookRepository.delete(i);
-        }
+        bookList.addBook(new Book("miua","dss", "hgss", "fsd", false));
+        bookList.addBook(new Book("rew","dss", "hgss", "e", false));
+        bookList.addBook(new Book("mvdvsiua","dss", "hgss", "hgdf", false));
+        bookList.addBook(new Book("sd","gsdg", "dffd", "sd", false));
+        bookList.addBook(new Book("vdsf","dss", "fddf", "dc", false));
+        bookList.addBook(new Book("xbvx","dss", "dffd", "asd", false));
+        bookList.addBook(new Book("daafa","sdds", "dffd", "zxc", false));
+        bookList.addBook(new Book("gsd","dfdss", "hgss", "xcs", false));
+        bookList.addBook(new Book("bcxc","dsdsdss", "fddf", "wwer", false));
+//        for( int i=1; i<11; i++){
+//            bookRepository.delete(i);
+//        }
 //        bookList.remove(book1);
 
 //        System.out.println(bookList.getCurrentList());
