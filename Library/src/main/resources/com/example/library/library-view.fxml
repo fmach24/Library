@@ -13,18 +13,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 
-<VBox alignment="CENTER" prefHeight="426.0" prefWidth="649.0" spacing="10" style="-fx-background-color: #694F8E;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.library.LibraryController">
+<VBox alignment="CENTER" prefHeight="404.0" prefWidth="649.0" spacing="10" style="-fx-background-color: #694F8E;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.library.LibraryController">
    <Pane prefHeight="106.0" prefWidth="650.0" style="-fx-background-color: #694F8E;">
       <children>
-         <ImageView blendMode="DARKEN" fitHeight="100.0" fitWidth="115.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+         <ImageView blendMode="DARKEN" fitHeight="108.0" fitWidth="122.0" layoutX="30.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@Zrzut ekranu 2025-02-01 175314.png" />
             </image>
          </ImageView>
-           <TextField fx:id="titleField" alignment="TOP_CENTER" layoutX="139.0" layoutY="34.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="283.0" promptText="Tytuł książki" style="-fx-background-color: #FFF6DA;" />
-      
-                <!-- Przycisk usuwania książki -->
-          <Button fx:id="deleteBookButton" layoutX="451.0" layoutY="34.0" style="-fx-background-color: F4D793;" text="Wypożycz">
+           <TextField fx:id="titleField" alignment="TOP_CENTER" layoutX="168.0" layoutY="34.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="283.0" promptText="Tytuł książki" style="-fx-background-color: #FFF6DA;" />
+         <Button fx:id="deleteBookButton" layoutX="500.0" layoutY="34.0" style="-fx-background-color: F4D793;" text="Wypożycz">
             <effect>
                <InnerShadow height="67.79" radius="32.81" width="65.45">
                   <color>
@@ -44,14 +42,34 @@
    </Pane>
 
     <!-- Tabela książek -->
-    <TableView fx:id="booksTable" prefHeight="306.0" prefWidth="0.0">
+    <TableView fx:id="booksTable" prefHeight="257.0" prefWidth="650.0">
         <columns>
             <TableColumn fx:id="titleColumn" prefWidth="250" style="-fx-background-color: #B692C2;" text="Tytuł" />
             <TableColumn fx:id="authorColumn" prefWidth="200" style="-fx-background-color: #B692C2;" text="Autor" />
-         <TableColumn fx:id="amountColumn" prefWidth="198.39998779296877" style="-fx-background-color: #B692C2;" text="Ilość " />
+         <TableColumn fx:id="amountColumn" prefWidth="198.39998779296877" style="-fx-background-color: #B692C2;" text="Gatunek" />
         </columns>
     </TableView>
 
     <!-- Sekcja dodawania nowej książki -->
     <HBox alignment="CENTER" spacing="10" />
+   <Pane prefHeight="46.0" prefWidth="650.0">
+      <children>
+         <Button fx:id="deleteBookButton1" alignment="CENTER" layoutX="529.0" layoutY="1.0" style="-fx-background-color: F4D793;" text="Wyloguj">
+            <effect>
+               <InnerShadow height="66.62" radius="32.5175" width="65.45">
+                  <color>
+                     <Color red="0.43157893419265747" green="0.43157893419265747" blue="0.43157893419265747" />
+                  </color>
+                  <input>
+                     <DropShadow height="45.56" radius="23.1575" width="49.07">
+                        <color>
+                           <Color red="0.6421052813529968" green="0.6421052813529968" blue="0.6421052813529968" />
+                        </color>
+                     </DropShadow>
+                  </input>
+               </InnerShadow>
+            </effect>
+         </Button>
+      </children>
+   </Pane>
 </VBox>
