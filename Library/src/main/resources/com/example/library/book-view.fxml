@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<BorderPane prefHeight="309.0" prefWidth="462.0" style="-fx-background-color: #185519;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.library.BookController">
+<BorderPane prefHeight="352.0" prefWidth="457.0" style="-fx-background-color: #185519;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <bottom>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="235.0" prefWidth="462.0" style="-fx-background-color: #257180;" BorderPane.alignment="CENTER">
          <children>
@@ -34,18 +34,18 @@
                   <Font name="Gill Sans MT Bold Italic" size="13.0" />
                </font>
             </Label>
-            <Button layoutX="161.0" layoutY="182.0" mnemonicParsing="false" prefHeight="7.0" prefWidth="74.0" style="-fx-background-color: #F2E5BF;" text="Wypożycz">
+            <Button layoutX="203.0" layoutY="182.0" mnemonicParsing="false" prefHeight="7.0" prefWidth="74.0" style="-fx-background-color: #F2E5BF;" text="Wypożycz">
                <effect>
-                  <InnerShadow choke="0.39" height="35.63" radius="17.1675" width="35.04">
+                  <InnerShadow choke="0.39" height="35.34" radius="17.095" width="35.04">
                      <input>
-                        <DropShadow height="68.23" radius="33.505" spread="0.17" width="67.79">
+                        <DropShadow height="42.28" radius="22.3375" spread="0.17" width="49.07">
                            <color>
-                              <Color red="0.8024015426635742" green="0.821052610874176" blue="0.26152047514915466" />
+                              <Color red="0.9490196108818054" green="0.8980392217636108" blue="0.7490196228027344" />
                            </color>
                         </DropShadow>
                      </input>
                      <color>
-                        <Color red="0.8736842274665833" green="0.5941052436828613" blue="0.524210512638092" />
+                        <Color red="0.9490196108818054" green="0.8980392217636108" blue="0.7490196228027344" />
                      </color>
                   </InnerShadow>
                </effect>
@@ -59,30 +59,11 @@
             <TextField layoutX="133.0" layoutY="66.0" prefHeight="26.0" prefWidth="215.0" style="-fx-background-color: #F2E5BF;" />
             <TextField layoutX="133.0" layoutY="100.0" prefHeight="26.0" prefWidth="215.0" style="-fx-background-color: #F2E5BF;" />
             <TextField layoutX="133.0" layoutY="137.0" prefHeight="26.0" prefWidth="215.0" style="-fx-background-color: #F2E5BF;" />
-            <Label layoutX="45.0" layoutY="105.0" text="Epoka">
+            <Label layoutX="45.0" layoutY="105.0" text="Gatunek">
                <font>
                   <Font name="Gill Sans MT Bold Italic" size="13.0" />
                </font>
             </Label>
-            <Button layoutX="257.0" layoutY="182.0" mnemonicParsing="false" prefHeight="9.0" prefWidth="68.0" style="-fx-background-color: #F2E5BF;" text="Anuluj">
-               <effect>
-                  <InnerShadow choke="0.07" height="32.11" radius="15.7" width="32.69">
-                     <color>
-                        <Color red="0.9490196108818054" green="0.8980392217636108" blue="0.7490196228027344" />
-                     </color>
-                     <input>
-                        <DropShadow height="51.41" radius="25.205" width="51.41">
-                           <color>
-                              <Color red="0.9490196108818054" green="0.8980392217636108" blue="0.7490196228027344" />
-                           </color>
-                        </DropShadow>
-                     </input>
-                  </InnerShadow>
-               </effect>
-               <font>
-                  <Font name="Gill Sans MT" size="13.0" />
-               </font>
-            </Button>
          </children>
       </AnchorPane>
    </bottom>
@@ -94,12 +75,12 @@
          <children>
             <ImageView blendMode="DARKEN" fitHeight="96.0" fitWidth="124.0" layoutX="36.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Zrzut ekranu 2025-02-01 175314.png" />
+                  <Image url="@Zrzut%20ekranu%202025-02-01%20175314.png" />
                </image>
             </ImageView>
             <ImageView blendMode="DARKEN" fitHeight="88.0" fitWidth="97.0" layoutX="351.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Zrzut ekranu 2025-02-02 141549.png" />
+                  <Image url="@Zrzut%20ekranu%202025-02-02%20141549.png" />
                </image>
             </ImageView>
          </children>
