@@ -19,7 +19,7 @@
          <children>
             <ImageView blendMode="DARKEN" fitHeight="128.0" fitWidth="132.0" layoutX="153.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../IdeaProjects/Library/Library/src/main/resources/com/example/library/Zrzut%20ekranu%202025-02-01%20175314.png" />
+                  <Image url="@Zrzut ekranu 2025-02-01 175314.png" />
                </image>
             </ImageView>
          </children>
