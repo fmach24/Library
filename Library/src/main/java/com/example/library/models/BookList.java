@@ -73,6 +73,10 @@ public class BookList {
     public Book readBook(int id) {
         return repository.read(id);
     }
+    public void readBooks() {
+        books.clear();
+        books.addAll(repository.read(null));
+    }
 
     public void updateBorrow(Book book) {
         repository.updateBorrow(book);

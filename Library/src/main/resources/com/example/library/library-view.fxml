@@ -15,7 +15,7 @@
             </image>
          </ImageView>
            <TextField fx:id="searchTextField" alignment="TOP_CENTER" layoutX="168.0" layoutY="34.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="283.0" promptText="Wyszukaj" style="-fx-background-color: #FFF6DA;" />
-         <CheckBox layoutX="342.0" layoutY="49.0" mnemonicParsing="false" onAction="#handleShowBorrowedCheckBox" prefHeight="49.0" prefWidth="105.0" text="Pokaż Wypożyczone" />
+         <CheckBox fx:id="showBorrowedCheckBox" layoutX="342.0" layoutY="49.0" mnemonicParsing="false" onAction="#handleShowBorrowedCheckBox" prefHeight="49.0" prefWidth="105.0" text="Pokaż Wypożyczone" />
          <Button layoutX="500.0" layoutY="34.0" onAction="#handleSearchButton" style="-fx-background-color: F4D793;" text="Szukaj">
             <effect>
                <InnerShadow height="67.79" radius="32.81" width="65.45">

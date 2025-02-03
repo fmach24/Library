@@ -46,6 +46,8 @@ public class LibraryController {
     private TableColumn<Book, String> genreColumn;
     @FXML
     private TextField searchTextField;
+    @FXML
+    private CheckBox showBorrowedCheckBox;
 
     private BookRepository bookRepository;
     private BookList bookList;
@@ -145,7 +147,10 @@ public class LibraryController {
 
     @FXML
     private void handleShowBorrowedCheckBox(){
-        bookList.readBorrowed();
+        if (showBorrowedCheckBox.isSelected()){
+            bookList.readBorrowed();
+        }
+        else bookList.readBooks();
     }
 
 

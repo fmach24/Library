@@ -19,7 +19,7 @@
                <Image url="@Zrzut ekranu 2025-02-02 141549.png" />
             </image>
          </ImageView>
-          <CheckBox onAction="#handleShowBorrowedCheckBox" layoutX="342.0" layoutY="49.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="105.0" text="Pokaż Wypożyczone" />
+          <CheckBox fx:id="showBorrowedCheckBox" layoutX="342.0" layoutY="49.0" mnemonicParsing="false" onAction="#handleShowBorrowedCheckBox" prefHeight="49.0" prefWidth="105.0" text="Pokaż Wypożyczone" />
          <Button layoutX="522.0" layoutY="6.0" onAction="#handleLogOutButton" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #889E73;" text="Wyloguj">
             <effect>
                <DropShadow>

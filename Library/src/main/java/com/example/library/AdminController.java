@@ -41,6 +41,8 @@ public class AdminController {
     private TableColumn<Book, String> authorColumn;
     @FXML
     private Button addBookButton;
+    @FXML
+    private CheckBox showBorrowedCheckBox;
 
 
     @FXML
@@ -99,7 +101,11 @@ public class AdminController {
 
     @FXML
     private void handleShowBorrowedCheckBox(){
-        bookList.readBorrowed();
+        if (showBorrowedCheckBox.isSelected()){
+            bookList.readBorrowed();
+        }
+        else bookList.readBooks();
+
     }
 
 
