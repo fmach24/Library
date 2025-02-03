@@ -3,6 +3,8 @@ package com.example.library.models;
 import javafx.beans.property.*;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.StringProperty;
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -75,11 +77,19 @@ public class Book {
 
     public void SetReturn(){
         if(!this.isRented.get()){
-            System.out.print("Książka została zwrócona");
+//            System.out.print("Książka została zwrócona");
             return;
         }
         this.isRented.set(false);
         this.expiration.set(null);
+    }
+
+    public void Extend(){
+        if(!this.isRented.get()){
+//            System.out.print("Książka została zwrócona");
+            return;
+        }
+        this.expiration =  new SimpleObjectProperty<>(LocalDateTime.now().plusMinutes(1));
     }
 
 

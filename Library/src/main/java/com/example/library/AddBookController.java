@@ -3,6 +3,7 @@ package com.example.library;
 import com.example.library.models.Book;
 import com.example.library.models.BookList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -49,9 +50,20 @@ public class AddBookController {
         Book book = new Book(title, author, genre, publisher, false);
         bookList.addBook(book);
 
+        showAlert("Książka", "Dodano książkę");
+
         Stage addBookStage = (Stage) addButton.getScene().getWindow();
         addBookStage.close();
 
+    }
+
+
+    @FXML
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
 }

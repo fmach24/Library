@@ -44,24 +44,35 @@ public class BookController {
         this.bookList = bookList;
     }
 
+    public void initialize() {
+        titleTextField.setText(currentBook.title.get());
+        authorTextField.setText(currentBook.author.get());
+        genreTextField.setText(currentBook.genre.get());
+        publisherTextField.setText(currentBook.publisher.get());
+    }
+
     @FXML
     private void handleBorrowButton(){
         currentBook.SetBorrow();
         bookList.updateBorrow(currentBook);
+        showAlert("Książka", "Książka została wypożyczona do " + currentBook.expiration.get());
 
 
         System.out.println(currentBook.isRented.get());
         System.out.println(currentBook.expiration.get());
 
-        Stage addBookStage = (Stage) cancelButton.getScene().getWindow();
-        addBookStage.close();
+//        Stage addBookStage = (Stage) cancelButton.getScene().getWindow();
+//        addBookStage.close();
 
     }
 
     @FXML
     private void handleExtendButton(){
-        Stage addBookStage = (Stage) cancelButton.getScene().getWindow();
-        addBookStage.close();
+        currentBook.Extend();
+        bookList.updateBorrow(currentBook);
+        showAlert("Książka", "Książka została przedłużona do " + currentBook.expiration.get());
+//        Stage addBookStage = (Stage) cancelButton.getScene().getWindow();
+//        addBookStage.close();
 
     }
     @FXML
@@ -69,13 +80,13 @@ public class BookController {
         currentBook.SetReturn();
         bookList.updateBorrow(currentBook);
 
-
+        showAlert("Książka", "Zwrócono książkę");
         System.out.println(currentBook.isRented.get());
         System.out.println(currentBook.expiration.get());
 
 
-        Stage addBookStage = (Stage) cancelButton.getScene().getWindow();
-        addBookStage.close();
+//        Stage addBookStage = (Stage) cancelButton.getScene().getWindow();
+//        addBookStage.close();
 
     }
 
@@ -84,6 +95,14 @@ public class BookController {
         Stage addBookStage = (Stage) cancelButton.getScene().getWindow();
         addBookStage.close();
 
+    }
+
+    @FXML
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
 

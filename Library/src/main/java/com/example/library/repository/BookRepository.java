@@ -107,6 +107,35 @@ public class BookRepository {
         return books;
     }
 
+    public List<Book> readBorrowed() {
+        List<Book> books = new ArrayList<Book>();
+        String sql = "SELECT * FROM Books WHERE isRented = 1";
+
+        try (var conn = DriverManager.getConnection("jdbc:sqlite:my.db");
+             var stmt = conn.createStatement();
+             var rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                if(rs.getString("expiration")!=null) {
+                    String fakeDateTime = rs.getString("expiration");
+//                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-ddTHH:mm:ss");
+                    LocalDateTime realDateTime = LocalDateTime.parse(fakeDateTime);
+                    Book book = new Book(rs.getInt("id"), rs.getString("title"), rs.getString("author"), rs.getString("genre"), rs.getString("publisher"), rs.getBoolean("isRented"), realDateTime);
+                    books.add(book);
+                }
+                else {
+                    Book book = new Book(rs.getInt("id"), rs.getString("title"), rs.getString("author"), rs.getString("genre"), rs.getString("publisher"), rs.getBoolean("isRented"));
+                    books.add(book);
+                }
+//                System.out.println(realDateTime);
+//                LocalDateTime miau = LocalDateTime.parse("2004-02-23 2:21:34");
+
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return books;
+    }
+
     public void update(Book book) {
         String sql = "UPDATE Books SET title = ?, author = ?, genre = ?, publisher = ? WHERE id = ?";
         try (var conn = DriverManager.getConnection("jdbc:sqlite:my.db");

@@ -23,6 +23,11 @@ public class AdminController {
         LogInControllerParent = controler;
     }
 
+    public AdminController(LogInController loginController) {
+        LogInControllerParent = loginController;
+
+    }
+
 //    Book currentBook = new Book();
 //    int currentId;
 
@@ -34,6 +39,8 @@ public class AdminController {
     private TableColumn<Book, String> titleColumn;
     @FXML
     private TableColumn<Book, String> authorColumn;
+    @FXML
+    private Button addBookButton;
 
 
     @FXML
@@ -60,6 +67,8 @@ public class AdminController {
         booksTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
 
+
+                //todo naprawic bug z usuwaniem ksiazki
 //                currentBook = obs.getValue();
 //                currentId = newSelection.id.get();
 //                currentBook = (readBook(currentId));
@@ -85,12 +94,15 @@ public class AdminController {
             }
         });
 
-
-
-
-
-
     }
+
+
+    @FXML
+    private void handleShowBorrowedCheckBox(){
+        bookList.readBorrowed();
+    }
+
+
     @FXML
     private void handleAddBookButton(){
 //                System.out.println(newSelection.genre);
@@ -109,6 +121,28 @@ public class AdminController {
             stage.setScene(scene);
             stage.show();
 
+    }
+    @FXML
+    private void handleLogOutButton(){
+        Stage stage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("log-in-view.fxml"));
+//        fxmlLoader.setController(new AdminController(this));
+        Scene scene = null;
+        try {
+            scene = new Scene(fxmlLoader.load(), 600, 400);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+//            LibraryController ctrl = fxmlLoader.getController();
+//            ctrl.setMainController(this);     niepotrzebny tutaj parent
+        stage.setTitle("Log in");
+        stage.setScene(scene);
+        stage.show();
+
+
+
+        Stage libraryStage = (Stage) addBookButton.getScene().getWindow();
+        libraryStage.close();
     }
 //
 //    public void addBook(Book book){

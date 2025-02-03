@@ -33,8 +33,8 @@ public class LogInController {
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
 
-        if (username.isEmpty()) {
-            showAlert("Błąd","Podaj nazwę użytkownika");
+        if (username.isEmpty() || password.isEmpty()) {
+            showAlert("Błąd","Podaj nazwę użytkownika i hasło");
             return;
         }
         if (username.equals("admin") && password.equals("admin")) {
@@ -42,6 +42,7 @@ public class LogInController {
 
             Stage stage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("admin-view.fxml"));
+            fxmlLoader.setController(new AdminController(this));
             Scene scene = null;
             try {
                 scene = new Scene(fxmlLoader.load(), 600, 400);
@@ -75,7 +76,7 @@ public class LogInController {
 
 
         }
-        else{
+        else if (password.equals("student")) {
 //            Stage stage = new Stage();
 //            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("library-view.fxml"));
 //            Scene scene = new Scene(fxmlLoader.load(), 700, 400);
@@ -87,14 +88,15 @@ public class LogInController {
 
             Stage stage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("library-view.fxml"));
+            fxmlLoader.setController(new LibraryController(this, username));
             Scene scene = null;
             try {
                 scene = new Scene(fxmlLoader.load(), 600, 400);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            LibraryController ctrl = fxmlLoader.getController();
-            ctrl.setMainController(this);
+//            LibraryController ctrl = fxmlLoader.getController();
+//            ctrl.setMainController(this);
             stage.setTitle("Biblioteka");
             stage.setScene(scene);
             stage.show();
@@ -102,8 +104,8 @@ public class LogInController {
             //closing login stage
             Stage logInStage = (Stage) logInButton.getScene().getWindow();
             logInStage.close();
-
         }
+        else  showAlert("Błąd","Niepoprawne dane");
     }
 
     @FXML

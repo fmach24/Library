@@ -3,6 +3,7 @@ package com.example.library;
 import com.example.library.models.Book;
 import com.example.library.models.BookList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
@@ -28,8 +29,6 @@ public class EditBookController {
     private TextField publisherTextField;
     @FXML
     private Button deleteButton;
-    @FXML
-    private CheckBox isRentedCheckBox;
 
 
 
@@ -59,6 +58,11 @@ public class EditBookController {
         String author = authorTextField.getText();
         String genre = genreTextField.getText();
         String publisher = publisherTextField.getText();
+
+        if(title.isEmpty() || author.isEmpty() || genre.isEmpty() || publisher.isEmpty()) {
+            showAlert("Książka", "Uzupełnij dane");
+            return;
+        }
 //        Book newBook = new Book(currentBook.id.get(), title, author, genre, publisher, false);
 //
 //        AdminControllerParent.updateBook(newBook);
@@ -69,6 +73,8 @@ public class EditBookController {
 
         bookList.updateBook(currentBook);
 
+        showAlert("Książka", "Zaaktualizowano książkę");
+
         Stage addBookStage = (Stage) deleteButton.getScene().getWindow();
         addBookStage.close();
     }
@@ -77,9 +83,19 @@ public class EditBookController {
 //        AdminControllerParent.deleteBook(currentBook);
         bookList.removeBook(currentBook);
 
+        showAlert("Książka", "Usunięto książkę");
+
         Stage addBookStage = (Stage) deleteButton.getScene().getWindow();
         addBookStage.close();
 
+    }
+
+    @FXML
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
 }

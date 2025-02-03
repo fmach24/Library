@@ -40,7 +40,6 @@
                   <Font name="Gill Sans MT Bold Italic" size="13.0" />
                </font>
             </Label>
-            <CheckBox fx:id="isRentedCheckBox" layoutX="342.0" layoutY="49.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="105.0" text="Dostępna" />
             <TextField fx:id="titleTextField" layoutX="150.0" layoutY="19.0" style="-fx-background-color: #FEFAF6;" />
             <TextField fx:id="authorTextField" layoutX="150.0" layoutY="49.0" style="-fx-background-color: #FEFAF6;" />
             <TextField fx:id="genreTextField" layoutX="150.0" layoutY="81.0" style="-fx-background-color: #FEFAF6;" />

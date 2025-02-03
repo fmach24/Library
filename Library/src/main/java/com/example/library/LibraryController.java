@@ -21,9 +21,16 @@ import java.util.UUID;
 public class LibraryController {
 
     private LogInController LogInControllerParent;
+    private final String username;
 
     public void setMainController(LogInController controler){
         LogInControllerParent = controler;
+    }
+
+    public LibraryController(LogInController loginController, String username) {
+        LogInControllerParent = loginController;
+        this.username = username;
+
     }
 
 
@@ -45,13 +52,18 @@ public class LibraryController {
 
 //    private final ObservableList<Book> books = FXCollections.observableArrayList();
 
+
     @FXML
-    public void initialize() throws IOException, IOException {
+    public void initialize() throws IOException, IOException{
         titleColumn.setCellValueFactory(cdf -> cdf.getValue().titleProperty());
         authorColumn.setCellValueFactory(cdf -> cdf.getValue().authorProperty());
         genreColumn.setCellValueFactory(cdf -> cdf.getValue().genreProperty());
         //todo ustawic na autosize/fill ostatnia kolumne cos tego typu
 
+//        System.out.println(username);
+
+
+        //todo witaj *uzytkownik* !
 
         //Obsluga table view
         booksTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
@@ -82,6 +94,9 @@ public class LibraryController {
         bookRepository = new BookRepository();
         bookList = new BookList(bookRepository);
         booksTable.setItems(bookList.getCurrentList());
+
+
+        showAlert("Witaj", "Cześć "+ username + "! Witaj w bibliotece Knyszyn");
 
 
 
@@ -121,10 +136,41 @@ public class LibraryController {
 //        BookRepository.create(bookList.getCurrentList().get(5));
 
     }
+
     @FXML
     private void handleSearchButton(){
         String filter = searchTextField.getText();
         bookList.setFilter(filter);
+    }
+
+    @FXML
+    private void handleShowBorrowedCheckBox(){
+        bookList.readBorrowed();
+    }
+
+
+    @FXML
+    private void handleLogOutButton(){
+
+        Stage stage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("log-in-view.fxml"));
+//        fxmlLoader.setController(new AdminController(this));
+        Scene scene = null;
+        try {
+            scene = new Scene(fxmlLoader.load(), 600, 400);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+//            LibraryController ctrl = fxmlLoader.getController();
+//            ctrl.setMainController(this);     niepotrzebny tutaj parent
+        stage.setTitle("Log in");
+        stage.setScene(scene);
+        stage.show();
+
+
+
+        Stage libraryStage = (Stage) searchTextField.getScene().getWindow();
+        libraryStage.close();
     }
 
 //    public void addBook(Book book){
@@ -139,11 +185,11 @@ public class LibraryController {
 //    public Book readBook(int id){
 //        return bookList.readBook(id);
 //    }
-//    @FXML
-//    private void showAlert(String title, String message) {
-//        Alert alert = new Alert(Alert.AlertType.ERROR);
-//        alert.setTitle(title);
-//        alert.setContentText(message);
-//        alert.showAndWait();
-//    }
+    @FXML
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 }

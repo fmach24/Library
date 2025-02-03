@@ -88,10 +88,12 @@ public class BookList {
     public void setFilter(String filter) {
         books.clear();
         books.addAll(repository.read(filter));
-
-
     }
-//
+    public void readBorrowed(){
+        books.clear();
+        books.addAll(repository.readBorrowed());
+    }
+    //
 //    public void remove(List<Book> selectedItems) {
 //        this.books.removeAll(selectedItems);
 //    }
