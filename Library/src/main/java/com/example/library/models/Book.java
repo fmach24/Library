@@ -68,7 +68,6 @@ public class Book {
 
     public void SetBorrow(){
         if(this.isRented.get()){
-            //todo odpowiednie komunikaty
             showAlert("Książka", "Książka jest wypożyczona");
             return;
         }
@@ -86,6 +85,7 @@ public class Book {
         this.isRented.set(false);
         this.expiration.set(null);
         showAlert("Książka", "Zwrócono książkę");
+        //todo NO TUTAJ I W EXTEND SIE PSUJE COS
     }
 
     public void Extend(){
