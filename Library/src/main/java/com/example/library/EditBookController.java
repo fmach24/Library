@@ -63,7 +63,7 @@ public class EditBookController {
         String genre = genreTextField.getText();
         String publisher = publisherTextField.getText();
 
-        if(title.isEmpty() || author.isEmpty() || genre.isEmpty() || publisher.isEmpty()) {
+        if(title == null || author == null || genre == null || publisher == null) {
             showAlert("Książka", "Uzupełnij dane");
             return;
         }

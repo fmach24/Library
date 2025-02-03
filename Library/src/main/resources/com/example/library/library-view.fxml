@@ -5,6 +5,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 
 <VBox alignment="CENTER" prefHeight="404.0" prefWidth="649.0" spacing="10" style="-fx-background-color: #694F8E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
    <Pane prefHeight="106.0" prefWidth="650.0" style="-fx-background-color: #694F8E;">
@@ -53,7 +54,7 @@
     <HBox alignment="CENTER" spacing="10" />
    <Pane prefHeight="46.0" prefWidth="650.0">
       <children>
-         <Button alignment="CENTER" layoutX="529.0" layoutY="1.0" onAction="#handleLogOutButton" style="-fx-background-color: F4D793;" text="Wyloguj">
+         <Button alignment="CENTER" layoutX="538.0" onAction="#handleLogOutButton" style="-fx-background-color: F4D793;" text="Wyloguj">
             <effect>
                <InnerShadow height="66.62" radius="32.5175" width="65.45">
                   <color>
@@ -69,6 +70,11 @@
                </InnerShadow>
             </effect>
          </Button>
+         <Label fx:id="loggedAsText" contentDisplay="RIGHT" layoutX="321.0" prefHeight="27.0" prefWidth="208.0" textAlignment="RIGHT">
+            <font>
+               <Font name="Arial" size="18.0" />
+            </font>
+         </Label>
       </children>
    </Pane>
 </VBox>

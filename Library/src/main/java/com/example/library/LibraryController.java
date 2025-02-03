@@ -49,6 +49,8 @@ public class LibraryController {
     private TextField searchTextField;
     @FXML
     private CheckBox showBorrowedCheckBox;
+    @FXML
+    private Label loggedAsText;
 
     private BookRepository bookRepository;
     private BookList bookList;
@@ -58,6 +60,9 @@ public class LibraryController {
 
     @FXML
     public void initialize() throws IOException, IOException{
+
+        loggedAsText.setText("Użytkownik: " + username);
+
         titleColumn.setCellValueFactory(cdf -> cdf.getValue().titleProperty());
         authorColumn.setCellValueFactory(cdf -> cdf.getValue().authorProperty());
         genreColumn.setCellValueFactory(cdf -> cdf.getValue().genreProperty());
@@ -102,8 +107,7 @@ public class LibraryController {
         bookList = new BookList(bookRepository);
         booksTable.setItems(bookList.getCurrentList());
 
-
-        showAlert("Witaj", "Cześć "+ username + "! Witaj w bibliotece Knyszyn");
+//        showAlert("Witaj", "Cześć "+ username + "! Witaj w bibliotece Knyszyn");
 
 
 
