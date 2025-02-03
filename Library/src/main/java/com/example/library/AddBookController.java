@@ -47,6 +47,11 @@ public class AddBookController {
         String genre = genreTextField.getText();
         String publisher = publisherTextField.getText();
 
+        if(title.isEmpty() || author.isEmpty() || genre.isEmpty() || publisher.isEmpty()) {
+            showAlert("Książka", "Uzupełnij dane");
+            return;
+        }
+
         Book book = new Book(title, author, genre, publisher, false);
         bookList.addBook(book);
 

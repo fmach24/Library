@@ -68,28 +68,34 @@ public class Book {
 
     public void SetBorrow(){
         if(this.isRented.get()){
-            System.out.print("Książka jest wypożyczona, zwolni się " + this.expiration.get().toString());
+            //todo odpowiednie komunikaty
+            showAlert("Książka", "Książka jest wypożyczona");
             return;
         }
         this.isRented.set(true);
-        this.expiration =  new SimpleObjectProperty<>(LocalDateTime.now().plusMinutes(1));
+        this.expiration =  new SimpleObjectProperty<>(LocalDateTime.now().plusDays(10));
+        showAlert("Książka", "Książka została wypożyczona do "+this.expiration.get().toLocalDate().toString());
     }
 
     public void SetReturn(){
         if(!this.isRented.get()){
 //            System.out.print("Książka została zwrócona");
+            showAlert("Książka", "Książka jest już zwrócona");
             return;
         }
         this.isRented.set(false);
         this.expiration.set(null);
+        showAlert("Książka", "Zwrócono książkę");
     }
 
     public void Extend(){
         if(!this.isRented.get()){
 //            System.out.print("Książka została zwrócona");
+            showAlert("Książka", "Książka została zwrócona");
             return;
         }
-        this.expiration =  new SimpleObjectProperty<>(LocalDateTime.now().plusMinutes(1));
+        this.expiration =  new SimpleObjectProperty<>(this.expiration.get().plusDays(1));
+        showAlert("Książka", "Książka została przedłużona do "+this.expiration.get().toLocalDate().toString());
     }
 
 
@@ -109,4 +115,13 @@ public class Book {
     public StringProperty publisherProperty() {
         return publisher;
     }
+
+    @FXML
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
 }

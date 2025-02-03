@@ -97,7 +97,7 @@ public class LogInController {
             }
 //            LibraryController ctrl = fxmlLoader.getController();
 //            ctrl.setMainController(this);
-            stage.setTitle("Biblioteka");
+            stage.setTitle("Biblioteka Knyszyn");
             stage.setScene(scene);
             stage.show();
 

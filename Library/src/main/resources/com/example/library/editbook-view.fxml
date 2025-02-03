@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.effect.InnerShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="349.0" prefWidth="496.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="349.0" prefWidth="496.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane prefHeight="137.0" prefWidth="496.0" style="-fx-background-color: #155B99; -fx-border-color: #FEFAF6; -fx-border-radius: 50; -fx-border-style: dotted; -fx-border-width: 3;">
          <children>
@@ -50,8 +44,8 @@
             <TextField fx:id="authorTextField" layoutX="150.0" layoutY="49.0" style="-fx-background-color: #FEFAF6;" />
             <TextField fx:id="genreTextField" layoutX="150.0" layoutY="81.0" style="-fx-background-color: #FEFAF6;" />
             <TextField fx:id="publisherTextField" layoutX="150.0" layoutY="111.0" style="-fx-background-color: #FEFAF6;" />
-            <Separator layoutX="323.0" layoutY="23.0" orientation="VERTICAL" prefHeight="94.0" prefWidth="3.0" />
-            <Button layoutX="180.0" layoutY="156.0" mnemonicParsing="false" onAction="#handleConfirmButton" style="-fx-background-color: #EADBC8;" text="Zatwierdź">
+            <Separator layoutX="321.0" layoutY="34.0" orientation="VERTICAL" prefHeight="94.0" prefWidth="3.0" />
+            <Button layoutX="340.0" layoutY="37.0" mnemonicParsing="false" onAction="#handleConfirmButton" style="-fx-background-color: #EADBC8;" text="Zatwierdź">
                <effect>
                   <DropShadow height="88.85" radius="46.8475" spread="0.22" width="100.54">
                      <color>
@@ -67,8 +61,7 @@
                   </DropShadow>
                </effect>
             </Button>
-            <Separator layoutX="168.0" layoutY="145.0" prefWidth="200.0" />
-            <Button fx:id="deleteButton" layoutX="277.0" layoutY="156.0" mnemonicParsing="false" onAction="#handleDeleteButton" style="-fx-background-color: #EADBC8;" text="Usuń">
+            <Button fx:id="deleteButton" layoutX="419.0" layoutY="37.0" mnemonicParsing="false" onAction="#handleDeleteButton" style="-fx-background-color: #EADBC8;" text="Usuń">
                <effect>
                   <InnerShadow choke="0.19" height="43.28" radius="22.0175" width="46.79">
                      <color>

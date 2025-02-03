@@ -44,6 +44,10 @@ public class EditBookController {
 //        id = AdminControllerParent.currentId;
 //
 //        currentBook = AdminControllerParent.currentBook;
+        titleTextField.setText(null);
+        authorTextField.setText(null);
+        genreTextField.setText(null);
+        publisherTextField.setText(null);
 
         titleTextField.setPromptText(currentBook.title.get());
         authorTextField.setPromptText(currentBook.author.get());
@@ -74,9 +78,10 @@ public class EditBookController {
         bookList.updateBook(currentBook);
 
         showAlert("Książka", "Zaaktualizowano książkę");
+        initialize();
 
-        Stage addBookStage = (Stage) deleteButton.getScene().getWindow();
-        addBookStage.close();
+//        Stage addBookStage = (Stage) deleteButton.getScene().getWindow();
+//        addBookStage.close();
     }
     @FXML
     private void handleDeleteButton() {
@@ -87,7 +92,6 @@ public class EditBookController {
 
         Stage addBookStage = (Stage) deleteButton.getScene().getWindow();
         addBookStage.close();
-
     }
 
     @FXML

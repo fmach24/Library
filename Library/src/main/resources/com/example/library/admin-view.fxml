@@ -9,18 +9,12 @@
 <VBox alignment="CENTER" prefHeight="442.0" prefWidth="602.0" spacing="10" style="-fx-background-color: #A94A4A;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
    <Pane prefHeight="117.0" prefWidth="602.0">
       <children>
-         <ImageView blendMode="DARKEN" fitHeight="133.0" fitWidth="126.0" layoutX="175.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
+         <ImageView blendMode="DARKEN" fitHeight="118.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@Zrzut ekranu 2025-02-01 175314.png" />
             </image>
          </ImageView>
-         <ImageView blendMode="DARKEN" fitHeight="106.0" fitWidth="108.0" layoutX="329.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@Zrzut ekranu 2025-02-02 141549.png" />
-            </image>
-         </ImageView>
-          <CheckBox fx:id="showBorrowedCheckBox" layoutX="342.0" layoutY="49.0" mnemonicParsing="false" onAction="#handleShowBorrowedCheckBox" prefHeight="49.0" prefWidth="105.0" text="Pokaż Wypożyczone" />
-         <Button layoutX="522.0" layoutY="6.0" onAction="#handleLogOutButton" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #889E73;" text="Wyloguj">
+         <Button layoutX="522.0" layoutY="14.0" onAction="#handleLogOutButton" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #889E73;" text="Wyloguj">
             <effect>
                <DropShadow>
                   <input>
@@ -44,33 +38,55 @@
     <TableView fx:id="booksTable" prefHeight="262.0" prefWidth="602.0" style="-fx-background-color: F4D793;">
         <columns>
             <TableColumn fx:id="idColumn" prefWidth="50" style="-fx-background-color: #889E73;" text="ID" />
-            <TableColumn fx:id="titleColumn" prefWidth="250" style="-fx-background-color: #889E73;" text="Tytuł" />
-            <TableColumn fx:id="authorColumn" prefWidth="298.4000244140625" style="-fx-background-color: #889E73;" text="Autor" />
+            <TableColumn fx:id="titleColumn" prefWidth="183.20001983642578" style="-fx-background-color: #889E73;" text="Tytuł" />
+            <TableColumn fx:id="authorColumn" prefWidth="207.199951171875" style="-fx-background-color: #889E73;" text="Autor" />
+         <TableColumn prefWidth="171.19998168945312" style="-fx-background-color: #889E73;" text="Status" />
         </columns>
       <columnResizePolicy>
          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
       </columnResizePolicy>
     </TableView>
+   <Pane prefHeight="111.0" prefWidth="602.0">
+      <children>
+         <TextField fx:id="searchTextField" alignment="TOP_CENTER" layoutX="216.0" layoutY="15.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="283.0" promptText="Wyszukaj" style="-fx-background-color: #FFF6DA;" />
+         <Button layoutX="522.0" layoutY="15.0" onAction="#handleSearchButton" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #889E73;" text="Wyszukaj">
+            <effect>
+               <DropShadow>
+                  <input>
+                     <InnerShadow>
+                        <color>
+                           <Color red="0.9684210419654846" green="0.9684210419654846" blue="0.9684210419654846" />
+                        </color>
+                     </InnerShadow>
+                  </input>
+                  <color>
+                     <Color red="1.0" green="1.0" blue="1.0" />
+                  </color>
+               </DropShadow>
+            </effect>
+         </Button>
+           <Button fx:id="addBookButton" layoutX="14.0" layoutY="15.0" onAction="#handleAddBookButton" style="-fx-background-color: #889E73;" text="Dodaj książkę">
+            <effect>
+               <DropShadow>
+                  <color>
+                     <Color red="0.9368420839309692" green="0.8574996590614319" blue="0.5968031287193298" />
+                  </color>
+                  <input>
+                     <InnerShadow>
+                        <color>
+                           <Color red="0.9612690210342407" green="1.0" blue="0.6499999761581421" />
+                        </color>
+                     </InnerShadow>
+                  </input>
+               </DropShadow>
+            </effect>
+         </Button>
+          <CheckBox fx:id="showBorrowedCheckBox" layoutX="216.0" layoutY="46.0" mnemonicParsing="false" onAction="#handleShowBorrowedCheckBox" prefHeight="49.0" prefWidth="138.0" text="Pokaż Wypożyczone" />
+      </children>
+   </Pane>
 
     <!-- Sekcja dodawania nowej książki -->
-    <HBox alignment="CENTER" prefHeight="0.0" prefWidth="602.0" spacing="10">
-        <Button fx:id="addBookButton" onAction="#handleAddBookButton" style="-fx-background-color: #889E73;" text="Dodaj książkę">
-         <effect>
-            <DropShadow>
-               <color>
-                  <Color red="0.9368420839309692" green="0.8574996590614319" blue="0.5968031287193298" />
-               </color>
-               <input>
-                  <InnerShadow>
-                     <color>
-                        <Color red="0.9612690210342407" green="1.0" blue="0.6499999761581421" />
-                     </color>
-                  </InnerShadow>
-               </input>
-            </DropShadow>
-         </effect>
-      </Button>
-    </HBox>
+    <HBox alignment="CENTER" prefHeight="0.0" prefWidth="602.0" spacing="10" />
    <effect>
       <SepiaTone level="0.82" />
    </effect>

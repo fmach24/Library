@@ -3,6 +3,7 @@ package com.example.library;
 import com.example.library.models.Book;
 import com.example.library.models.BookList;
 import com.example.library.repository.BookRepository;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -43,6 +44,8 @@ public class AdminController {
     private Button addBookButton;
     @FXML
     private CheckBox showBorrowedCheckBox;
+    @FXML
+    private TextField searchTextField;
 
 
     @FXML
@@ -90,12 +93,25 @@ public class AdminController {
                 }
 //                EditBookController ctrl = fxmlLoader.getController();
 //                ctrl.setMainController(this);
+
                 stage.setTitle("Edytuj książkę");
                 stage.setScene(scene);
                 stage.show();
+
+                Platform.runLater(() -> {
+                    booksTable.getSelectionModel().clearSelection();
+                });
+//                booksTable.getSelectionModel().clearSelection();
+
             }
         });
 
+    }
+
+    @FXML
+    private void handleSearchButton(){
+        String filter = searchTextField.getText();
+        bookList.setFilter(filter);
     }
 
 

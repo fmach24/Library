@@ -3,6 +3,7 @@ package com.example.library;
 import com.example.library.models.Book;
 import com.example.library.models.BookList;
 import com.example.library.repository.BookRepository;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -89,6 +90,10 @@ public class LibraryController {
                 stage.setTitle("Informacje o książce");
                 stage.setScene(scene);
                 stage.show();
+
+                Platform.runLater(() -> {
+                    booksTable.getSelectionModel().clearSelection();
+                });
             }
         });
 
