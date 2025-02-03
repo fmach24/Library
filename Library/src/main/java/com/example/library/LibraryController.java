@@ -46,6 +46,8 @@ public class LibraryController {
     @FXML
     private TableColumn<Book, String> genreColumn;
     @FXML
+    private TableColumn<Book, String> isRentedColumn;
+    @FXML
     private TextField searchTextField;
     @FXML
     private CheckBox showBorrowedCheckBox;
@@ -66,6 +68,9 @@ public class LibraryController {
         titleColumn.setCellValueFactory(cdf -> cdf.getValue().titleProperty());
         authorColumn.setCellValueFactory(cdf -> cdf.getValue().authorProperty());
         genreColumn.setCellValueFactory(cdf -> cdf.getValue().genreProperty());
+        isRentedColumn.setCellValueFactory(cdf -> cdf.getValue().statusLabel());
+        isRentedColumn.setCellFactory(factory -> new ColoredStatusTableCell("-fx-background-color: #B692C2;"));
+
         //todo ustawic na autosize/fill ostatnia kolumne cos tego typu
 
 //        System.out.println(username);
@@ -106,6 +111,11 @@ public class LibraryController {
         bookRepository = new BookRepository();
         bookList = new BookList(bookRepository);
         booksTable.setItems(bookList.getCurrentList());
+
+
+
+
+
 
 //        showAlert("Witaj", "Cześć "+ username + "! Witaj w bibliotece Knyszyn");
 
@@ -157,9 +167,12 @@ public class LibraryController {
     @FXML
     private void handleShowBorrowedCheckBox(){
         if (showBorrowedCheckBox.isSelected()){
-            bookList.readBorrowed();
+            bookList.onlyBorrow = true;
         }
-        else bookList.readBooks();
+        else {
+            bookList.onlyBorrow = false;
+        }
+        bookList.readBooks();
     }
 
 

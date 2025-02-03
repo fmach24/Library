@@ -17,12 +17,15 @@ public class BookList {
 //    private ObservableList<Book> current;
     private BookRepository repository;
 
+    public String currentFilter;
+    public boolean onlyBorrow;
+
     public BookList(BookRepository repository) {
         this.repository = repository;
 
 //        current = FXCollections.<Book>observableArrayList();
 //        List<Book> miau = BookRepository.read();
-        books = FXCollections.observableArrayList(repository.read(null));
+        books = FXCollections.observableArrayList(repository.read(null, false));
 //        current.addAll(books);
 //        books.addListener(new ListChangeListener<Book>() {
 //            @Override
@@ -75,11 +78,12 @@ public class BookList {
     }
     public void readBooks() {
         books.clear();
-        books.addAll(repository.read(null));
+        books.addAll(repository.read(currentFilter, onlyBorrow));
     }
 
     public void updateBorrow(Book book) {
         repository.updateBorrow(book);
+      this.readBooks();
     }
 
     public void removeBook(Book book) {
@@ -90,13 +94,14 @@ public class BookList {
     }
 
     public void setFilter(String filter) {
-        books.clear();
-        books.addAll(repository.read(filter));
+
+        this.currentFilter = filter.isEmpty() ? null : filter;
+        this.readBooks();
     }
-    public void readBorrowed(){
-        books.clear();
-        books.addAll(repository.readBorrowed());
-    }
+//    public void readBorrowed(){
+//        books.clear();
+//        books.addAll(repository.read(currentFilter, true));
+//    }
     //
 //    public void remove(List<Book> selectedItems) {
 //        this.books.removeAll(selectedItems);

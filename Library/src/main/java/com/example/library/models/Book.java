@@ -17,7 +17,8 @@ public class Book {
     public StringProperty genre;
     public StringProperty publisher;
     public BooleanProperty isRented;
-    public ObjectProperty<LocalDateTime> expiration;
+    public StringProperty statusLabel = new SimpleStringProperty();
+    public ObjectProperty<LocalDateTime> expiration = new SimpleObjectProperty<>();
 
     public Book(int id, String title, String author, String genre, String publisher, boolean isRented, LocalDateTime expiration) {
 
@@ -72,7 +73,8 @@ public class Book {
             return;
         }
         this.isRented.set(true);
-        this.expiration =  new SimpleObjectProperty<>(LocalDateTime.now().plusDays(10));
+        this.statusLabel.setValue("Niedostępna");
+        this.expiration.setValue(LocalDateTime.now().plusDays(10));
         showAlert("Książka", "Książka została wypożyczona do "+this.expiration.get().toLocalDate().toString());
     }
 
@@ -83,7 +85,8 @@ public class Book {
             return;
         }
         this.isRented.set(false);
-        this.expiration.set(null);
+        this.statusLabel.setValue("Dostępna");
+        this.expiration.setValue(null);
         showAlert("Książka", "Zwrócono książkę");
         //todo NO TUTAJ I W EXTEND SIE PSUJE COS
     }
@@ -94,7 +97,7 @@ public class Book {
             showAlert("Książka", "Książka została zwrócona");
             return;
         }
-        this.expiration =  new SimpleObjectProperty<>(this.expiration.get().plusDays(1));
+        this.expiration.setValue(this.expiration.get().plusDays(1));
         showAlert("Książka", "Książka została przedłużona do "+this.expiration.get().toLocalDate().toString());
     }
 
@@ -115,6 +118,29 @@ public class Book {
     public StringProperty publisherProperty() {
         return publisher;
     }
+    public BooleanProperty isRentedProperty() {
+//        if(isRented.get()){
+//            StringProperty information = new SimpleStringProperty("Niedostępna");
+//            return information;
+//        }
+//        else{
+//            StringProperty information = new SimpleStringProperty("Dostępna");
+//            return information;
+//        }
+        return isRented;
+    }
+    public StringProperty statusLabel() {
+//        StringProperty statusLabel = new SimpleStringProperty();
+        if(isRented.get()){
+            this.statusLabel.setValue("Niedostępna");
+            return this.statusLabel;
+        }
+        else{
+            this.statusLabel.setValue("Dostępna");
+            return this.statusLabel;
+        }
+    }
+
 
     @FXML
     private void showAlert(String title, String message) {

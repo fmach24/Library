@@ -43,7 +43,7 @@
             <TableColumn fx:id="titleColumn" prefWidth="196.00000303983688" style="-fx-background-color: #B692C2;" text="Tytuł" />
             <TableColumn fx:id="authorColumn" prefWidth="186.40000915527344" style="-fx-background-color: #B692C2;" text="Autor" />
          <TableColumn fx:id="genreColumn" prefWidth="170.39996337890625" style="-fx-background-color: #B692C2;" text="Gatunek" />
-         <TableColumn prefWidth="102.40008544921875" style="-fx-background-color: #B692C2;" text="Status" />
+         <TableColumn fx:id="isRentedColumn" prefWidth="102.40008544921875" style="-fx-background-color: #B692C2;" text="Status" />
         </columns>
       <columnResizePolicy>
          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

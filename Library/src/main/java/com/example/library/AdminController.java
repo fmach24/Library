@@ -41,6 +41,8 @@ public class AdminController {
     @FXML
     private TableColumn<Book, String> authorColumn;
     @FXML
+    private TableColumn<Book, String> isRentedColumn;
+    @FXML
     private Button addBookButton;
     @FXML
     private CheckBox showBorrowedCheckBox;
@@ -61,6 +63,8 @@ public class AdminController {
         idColumn.setCellValueFactory(cdf -> cdf.getValue().idProperty().asString());
         titleColumn.setCellValueFactory(cdf -> cdf.getValue().titleProperty());
         authorColumn.setCellValueFactory(cdf -> cdf.getValue().authorProperty());
+        isRentedColumn.setCellValueFactory(cdf -> cdf.getValue().statusLabel());
+        isRentedColumn.setCellFactory(factory -> new ColoredStatusTableCell("-fx-background-color: #889E73;"));
 
 
         bookRepository = new BookRepository();
@@ -87,7 +91,7 @@ public class AdminController {
 
                 Scene scene = null;
                 try {
-                    scene = new Scene(fxmlLoader.load(), 600, 400);
+                    scene = new Scene(fxmlLoader.load(), 500, 300);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -118,10 +122,12 @@ public class AdminController {
     @FXML
     private void handleShowBorrowedCheckBox(){
         if (showBorrowedCheckBox.isSelected()){
-            bookList.readBorrowed();
+            bookList.onlyBorrow = true;
         }
-        else bookList.readBooks();
-
+        else {
+            bookList.onlyBorrow = false;
+        }
+        bookList.readBooks();
     }
 
 

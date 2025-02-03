@@ -45,37 +45,37 @@
             <TextField fx:id="genreTextField" layoutX="150.0" layoutY="81.0" style="-fx-background-color: #FEFAF6;" />
             <TextField fx:id="publisherTextField" layoutX="150.0" layoutY="111.0" style="-fx-background-color: #FEFAF6;" />
             <Separator layoutX="321.0" layoutY="34.0" orientation="VERTICAL" prefHeight="94.0" prefWidth="3.0" />
-            <Button layoutX="340.0" layoutY="37.0" mnemonicParsing="false" onAction="#handleConfirmButton" style="-fx-background-color: #EADBC8;" text="Zatwierdź">
-               <effect>
-                  <DropShadow height="88.85" radius="46.8475" spread="0.22" width="100.54">
-                     <color>
-                        <Color red="0.9686274528503418" green="0.9607843160629272" blue="0.9607843160629272" />
-                     </color>
-                     <input>
-                        <InnerShadow choke="0.19" height="36.21" radius="21.9925" width="53.76">
-                           <color>
-                              <Color red="0.9578947424888611" green="0.9578947424888611" blue="0.9578947424888611" />
-                           </color>
-                        </InnerShadow>
-                     </input>
-                  </DropShadow>
-               </effect>
+            <Button layoutX="337.0" layoutY="37.0" mnemonicParsing="false" onAction="#handleConfirmButton" style="-fx-background-color: #EADBC8;" text="Zatwierdź">
+<!--               <effect>-->
+<!--                  <DropShadow height="88.85" radius="46.8475" spread="0.22" width="100.54">-->
+<!--                     <color>-->
+<!--                        <Color red="0.9686274528503418" green="0.9607843160629272" blue="0.9607843160629272" />-->
+<!--                     </color>-->
+<!--                     <input>-->
+<!--                        <InnerShadow choke="0.19" height="36.21" radius="21.9925" width="53.76">-->
+<!--                           <color>-->
+<!--                              <Color red="0.9578947424888611" green="0.9578947424888611" blue="0.9578947424888611" />-->
+<!--                           </color>-->
+<!--                        </InnerShadow>-->
+<!--                     </input>-->
+<!--                  </DropShadow>-->
+<!--               </effect>-->
             </Button>
-            <Button fx:id="deleteButton" layoutX="419.0" layoutY="37.0" mnemonicParsing="false" onAction="#handleDeleteButton" style="-fx-background-color: #EADBC8;" text="Usuń">
-               <effect>
-                  <InnerShadow choke="0.19" height="43.28" radius="22.0175" width="46.79">
-                     <color>
-                        <Color red="0.9686274528503418" green="0.9607843160629272" blue="0.9607843160629272" />
-                     </color>
-                     <input>
-                        <DropShadow height="97.03999999999999" radius="49.4825" spread="0.21" width="102.89">
-                           <color>
-                              <Color red="0.9686274528503418" green="0.9607843160629272" blue="0.9607843160629272" />
-                           </color>
-                        </DropShadow>
-                     </input>
-                  </InnerShadow>
-               </effect>
+            <Button fx:id="deleteButton" layoutX="434.0" layoutY="37.0" mnemonicParsing="false" onAction="#handleDeleteButton" prefHeight="25.0" prefWidth="48.0" style="-fx-background-color: #EADBC8;" text="Usuń">
+<!--               <effect>-->
+<!--                  <InnerShadow choke="0.19" height="43.28" radius="22.0175" width="46.79">-->
+<!--                     <color>-->
+<!--                        <Color red="0.9686274528503418" green="0.9607843160629272" blue="0.9607843160629272" />-->
+<!--                     </color>-->
+<!--                     <input>-->
+<!--                        <DropShadow height="97.03999999999999" radius="49.4825" spread="0.21" width="102.89">-->
+<!--                           <color>-->
+<!--                              <Color red="0.9686274528503418" green="0.9607843160629272" blue="0.9607843160629272" />-->
+<!--                           </color>-->
+<!--                        </DropShadow>-->
+<!--                     </input>-->
+<!--                  </InnerShadow>-->
+<!--               </effect>-->
             </Button>
          </children>
       </Pane>
