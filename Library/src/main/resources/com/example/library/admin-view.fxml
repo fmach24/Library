@@ -46,7 +46,7 @@
          </Pane>
       
           <!-- Tabela książek -->
-          <TableView fx:id="booksTable" prefHeight="288.0" prefWidth="722.0" style="-fx-background-color: F4D793;" GridPane.rowIndex="1">
+          <TableView fx:id="booksTable" prefHeight="288.0" prefWidth="722.0" style="-fx-background-color: F4D793; -fx-font-size: 16px;" GridPane.rowIndex="1">
               <columns>
                   <TableColumn fx:id="idColumn" prefWidth="50" style="-fx-background-color: #889E73;" text="ID" />
                   <TableColumn fx:id="titleColumn" prefWidth="210.59999084472656" style="-fx-background-color: #889E73;" text="Tytuł" />
