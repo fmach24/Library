@@ -91,7 +91,7 @@ public class AdminController {
 
                 Scene scene = null;
                 try {
-                    scene = new Scene(fxmlLoader.load(), 500, 300);
+                    scene = new Scene(fxmlLoader.load(), 500, 350);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -139,7 +139,7 @@ public class AdminController {
             fxmlLoader.setController(new AddBookController(this, bookList));
             Scene scene = null;
             try {
-                scene = new Scene(fxmlLoader.load(), 600, 400);
+                scene = new Scene(fxmlLoader.load(), 500, 335);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

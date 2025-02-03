@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="349.0" prefWidth="496.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
@@ -61,7 +59,7 @@
 <!--                  </DropShadow>-->
 <!--               </effect>-->
             </Button>
-            <Button fx:id="deleteButton" layoutX="434.0" layoutY="37.0" mnemonicParsing="false" onAction="#handleDeleteButton" prefHeight="25.0" prefWidth="48.0" style="-fx-background-color: #EADBC8;" text="Usuń">
+            <Button fx:id="deleteButton" layoutX="414.0" layoutY="37.0" mnemonicParsing="false" onAction="#handleDeleteButton" prefHeight="25.0" prefWidth="48.0" style="-fx-background-color: #EADBC8;" text="Usuń">
 <!--               <effect>-->
 <!--                  <InnerShadow choke="0.19" height="43.28" radius="22.0175" width="46.79">-->
 <!--                     <color>-->

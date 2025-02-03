@@ -91,7 +91,7 @@ public class LogInController {
             fxmlLoader.setController(new LibraryController(this, username));
             Scene scene = null;
             try {
-                scene = new Scene(fxmlLoader.load(), 1000, 800);
+                scene = new Scene(fxmlLoader.load(), 900, 600);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

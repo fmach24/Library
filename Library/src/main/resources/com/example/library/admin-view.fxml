@@ -20,7 +20,7 @@
       <children>
          <Pane prefHeight="117.0" prefWidth="602.0">
             <children>
-               <ImageView blendMode="DARKEN" fitHeight="156.0" fitWidth="180.0" layoutY="-21.0" pickOnBounds="true" preserveRatio="true">
+               <ImageView blendMode="DARKEN" fitHeight="150.0" fitWidth="150.0" layoutY="-15.0" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@Zrzut ekranu 2025-02-01 175314.png" />
                   </image>
