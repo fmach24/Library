@@ -2,6 +2,7 @@ package com.example.library.models;
 
 import com.example.library.Listener;
 import com.example.library.repository.BookRepository;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -13,32 +14,42 @@ import javafx.collections.ListChangeListener;
 public class BookList {
 
     private ObservableList<Book> books;
-    private ObservableList<Book> current;
+//    private ObservableList<Book> current;
     private BookRepository repository;
 
     public BookList(BookRepository repository) {
         this.repository = repository;
 
-        current = FXCollections.<Book>observableArrayList();
+//        current = FXCollections.<Book>observableArrayList();
 //        List<Book> miau = BookRepository.read();
-        books = FXCollections.observableArrayList(repository.read());
-        current.addAll(books);
-        books.addListener(new ListChangeListener<Book>() {
-            @Override
-            public void onChanged(javafx.collections.ListChangeListener.Change<? extends Book> c) {
-                current.clear();
-                current.addAll(books);
-            }
-        });
+        books = FXCollections.observableArrayList(repository.read(null));
+//        current.addAll(books);
+//        books.addListener(new ListChangeListener<Book>() {
+//            @Override
+//            public void onChanged(javafx.collections.ListChangeListener.Change<? extends Book> c) {
+//                current.clear();
+//                current.addAll(books);
+//            }
+//
+//
+//        });
     }
 
     public ObservableList<Book> getCurrentList() {
-        return this.current;
+        return books;
     }
 
     public void addBook(Book book) {
-        book.id = repository.create(book);
+        int id = repository.create(book);
+        book.id = new SimpleIntegerProperty(id);
         books.add(book);
+    }
+
+    public void updateBook(Book book) {
+       repository.update(book);
+//       current.clear();
+//       current.addAll(books);
+       //todo zrobic zeby updatowala sis lista ksiazek
     }
 //
 //    public void addBook(String name, String email, String phone, String address, String ID, String type, int credits, double scholarship, String deductionCode) {
@@ -59,9 +70,26 @@ public class BookList {
 //        return null;
 //    }
 
-    public void remove(Book book) {
-        repository.delete(book.id);
-        this.books.remove(book);
+    public Book readBook(int id) {
+        return repository.read(id);
+    }
+
+    public void updateBorrow(Book book) {
+        repository.updateBorrow(book);
+    }
+
+    public void removeBook(Book book) {
+        repository.delete(book.idProperty().get());
+        books.remove(book);
+
+        //todo nie updatuje sie table view z jakiegos powodu
+    }
+
+    public void setFilter(String filter) {
+        books.clear();
+        books.addAll(repository.read(filter));
+
+
     }
 //
 //    public void remove(List<Book> selectedItems) {

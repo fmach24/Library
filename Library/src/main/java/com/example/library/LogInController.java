@@ -37,20 +37,45 @@ public class LogInController {
             showAlert("Błąd","Podaj nazwę użytkownika");
             return;
         }
-        if (username == "admin" && password == "admin") {
+        if (username.equals("admin") && password.equals("admin")) {
+
+
             Stage stage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("admin-view.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 700, 400);
-            stage.setTitle("Admin");
+            Scene scene = null;
+            try {
+                scene = new Scene(fxmlLoader.load(), 600, 400);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+//            LibraryController ctrl = fxmlLoader.getController();
+//            ctrl.setMainController(this);     niepotrzebny tutaj parent
+            stage.setTitle("Administracja");
             stage.setScene(scene);
             stage.show();
+
+            //closing login stage
+            Stage logInStage = (Stage) logInButton.getScene().getWindow();
+            logInStage.close();
+
+
+
+//
+//            Stage stage = new Stage();
+//            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("admin-view.fxml"));
+//            Scene scene = new Scene(fxmlLoader.load(), 700, 400);
+//            stage.setTitle("Admin");
+//            stage.setScene(scene);
+//            stage.show();
             //closing login stage
 //            Stage logInStage = (Stage) logInButton.getScene().getWindow();
 //            logInStage.close();
+
+
+
+
         }
         else{
-
-
 //            Stage stage = new Stage();
 //            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("library-view.fxml"));
 //            Scene scene = new Scene(fxmlLoader.load(), 700, 400);

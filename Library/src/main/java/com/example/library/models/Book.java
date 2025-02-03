@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class Book {
-    public int id;
+    public IntegerProperty id;
     public StringProperty title;
     public StringProperty author;
     public StringProperty genre;
@@ -19,7 +19,7 @@ public class Book {
 
     public Book(int id, String title, String author, String genre, String publisher, boolean isRented, LocalDateTime expiration) {
 
-        this.id = id;
+        this.id = new SimpleIntegerProperty(id);
         this.title = new SimpleStringProperty(title);
         this.author = new SimpleStringProperty(author);
         this.genre = new SimpleStringProperty(genre);
@@ -37,7 +37,7 @@ public class Book {
     }
     public Book(int id, String title, String author, String genre,  String publisher, boolean isRented) {
 
-        this.id = id;
+        this.id = new SimpleIntegerProperty(id);
         this.title = new SimpleStringProperty(title);
         this.author = new SimpleStringProperty(author);
         this.genre = new SimpleStringProperty(genre);
@@ -62,6 +62,31 @@ public class Book {
 //    public int getAmount() {
 //        return amount.get();
 //    }
+
+
+    public void SetBorrow(){
+        if(this.isRented.get()){
+            System.out.print("Książka jest wypożyczona, zwolni się " + this.expiration.get().toString());
+            return;
+        }
+        this.isRented.set(true);
+        this.expiration =  new SimpleObjectProperty<>(LocalDateTime.now().plusMinutes(1));
+    }
+
+    public void SetReturn(){
+        if(!this.isRented.get()){
+            System.out.print("Książka została zwrócona");
+            return;
+        }
+        this.isRented.set(false);
+        this.expiration.set(null);
+    }
+
+
+
+    public IntegerProperty idProperty() {
+    return id;
+}
     public StringProperty titleProperty() {
         return title;
     }

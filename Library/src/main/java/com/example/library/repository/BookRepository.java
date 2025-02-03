@@ -45,11 +45,27 @@ public class BookRepository {
             pstmt.setInt(1, id);
             var rs = pstmt.executeQuery();
             if (rs.next()) {
+
+                if(rs.getString("expiration")!=null) {
+                    String fakeDateTime = rs.getString("expiration");
+//                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                    LocalDateTime realDateTime = LocalDateTime.parse(fakeDateTime);
+                    Book book = new Book(rs.getInt("id"), rs.getString("title"), rs.getString("author"), rs.getString("genre"), rs.getString("publisher"), rs.getBoolean("isRented"), realDateTime);
+                    return book;
+                }
+                else {
+                    Book book = new Book(rs.getInt("id"), rs.getString("title"), rs.getString("author"), rs.getString("genre"), rs.getString("publisher"), rs.getBoolean("isRented"));
+                    return book;
+                }
+
+
+
+
                 //TODO nie bedzie działac gdy jest null trzeba zrobic if czy cos tego typu
-                String fakeDateTime = rs.getString("expiration");
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-                LocalDateTime realDateTime = LocalDateTime.parse(fakeDateTime, formatter);
-                return new Book(rs.getInt("id"), rs.getString("title"), rs.getString("author"), rs.getString("genre"), rs.getString("publisher"), rs.getBoolean("isRented"), realDateTime);
+//                String fakeDateTime = rs.getString("expiration");
+//                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+//                LocalDateTime realDateTime = LocalDateTime.parse(fakeDateTime, formatter);
+//                return new Book(rs.getInt("id"), rs.getString("title"), rs.getString("author"), rs.getString("genre"), rs.getString("publisher"), rs.getBoolean("isRented"), realDateTime);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -58,17 +74,22 @@ public class BookRepository {
     }
 
 
-    public List<Book> read() {
+    public List<Book> read(String filter) {
         List<Book> books = new ArrayList<Book>();
         String sql = "SELECT * FROM Books";
+        if(filter!=null)
+        {
+            sql += " WHERE TITLE LIKE '%" + filter+"%' OR AUTHOR LIKE '%" + filter+"%' OR GENRE LIKE '%" + filter+"%'";
+
+        }
         try (var conn = DriverManager.getConnection("jdbc:sqlite:my.db");
              var stmt = conn.createStatement();
              var rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
                 if(rs.getString("expiration")!=null) {
                     String fakeDateTime = rs.getString("expiration");
-                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-                    LocalDateTime realDateTime = LocalDateTime.parse(fakeDateTime, formatter);
+//                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-ddTHH:mm:ss");
+                    LocalDateTime realDateTime = LocalDateTime.parse(fakeDateTime);
                     Book book = new Book(rs.getInt("id"), rs.getString("title"), rs.getString("author"), rs.getString("genre"), rs.getString("publisher"), rs.getBoolean("isRented"), realDateTime);
                     books.add(book);
                 }
@@ -95,7 +116,7 @@ public class BookRepository {
             pstmt.setString(2, book.author.get());
             pstmt.setString(3, book.genre.get());
             pstmt.setString(4, book.publisher.get());
-            pstmt.setInt(5, book.id);
+            pstmt.setInt(5, book.id.get());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -103,7 +124,34 @@ public class BookRepository {
     }
 
 
-    //TODO DODAC UPDATE DO STANU WYPOZYCZENIA (WYPOZYCZ - ODDAJ)
+    //TODO DODAC UPDATE DO STANU WYPOZYCZENIA (WYPOZYCZ - ODDAJ) sprawdzic czy dobrze zaimplementowane
+    public void updateBorrow(Book book) {
+        String sql = "UPDATE Books SET isRented = ?, expiration = ? WHERE id = ?";
+        try (var conn = DriverManager.getConnection("jdbc:sqlite:my.db");
+             var pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setBoolean(1, book.isRented.get());
+            pstmt.setString(2, book.expiration.get() != null ? book.expiration.get().toString() : null);
+            pstmt.setInt(3, book.id.get());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+//    public void returning(Book book) {
+//        String sql = "UPDATE Books SET isRented = ? expiration = ? WHERE id = ?";
+//        try (var conn = DriverManager.getConnection("jdbc:sqlite:my.db");
+//             var pstmt = conn.prepareStatement(sql)) {
+//
+//            pstmt.setBoolean(1, book.isRented.get());
+//            pstmt.setString(2, book.expiration.get().toString());
+//            pstmt.setInt(3, book.id.get());
+//            pstmt.executeUpdate();
+//        } catch (SQLException e) {
+//            System.out.println(e.getMessage());
+//        }
+//    }
 
 
 

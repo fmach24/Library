@@ -36,7 +36,10 @@ public class LibraryController {
     @FXML
     private TableColumn<Book, String> authorColumn;
     @FXML
-    private TableColumn<Book, String> amountColumn;
+    private TableColumn<Book, String> genreColumn;
+    @FXML
+    private TextField searchTextField;
+
     private BookRepository bookRepository;
     private BookList bookList;
 
@@ -46,23 +49,29 @@ public class LibraryController {
     public void initialize() throws IOException, IOException {
         titleColumn.setCellValueFactory(cdf -> cdf.getValue().titleProperty());
         authorColumn.setCellValueFactory(cdf -> cdf.getValue().authorProperty());
-//        amountColumn.setCellValueFactory(cdf -> cdf.getValue().amountProperty());
+        genreColumn.setCellValueFactory(cdf -> cdf.getValue().genreProperty());
+        //todo ustawic na autosize/fill ostatnia kolumne cos tego typu
 
 
         //Obsluga table view
         booksTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
-               System.out.println(newSelection.genre);
+//               System.out.println(newSelection.genre);
+//                currentId = newSelection.id.get();
+//                currentBook = readBook(currentId);
+
                 Stage stage = new Stage();
                 FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("book-view.fxml"));
+                fxmlLoader.setController(new BookController(this, obs.getValue(), bookList));
+
                 Scene scene = null;
                 try {
                     scene = new Scene(fxmlLoader.load(), 600, 400);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-                BookController ctrl = fxmlLoader.getController();
-                ctrl.setMainController(this);
+//                BookController ctrl = fxmlLoader.getController();
+//                ctrl.setMainController(this);
                 stage.setTitle("Informacje o książce");
                 stage.setScene(scene);
                 stage.show();
@@ -76,17 +85,23 @@ public class LibraryController {
 
 
 
+
+
+
+
+
+
 //        bookRepository.delete(bookList.getCurrentList().getFirst().id);
 //        Book book1 = new Book("miua","dss", "hgss", "fsd", false);
-        bookList.addBook(new Book("miua","dss", "hgss", "fsd", false));
-        bookList.addBook(new Book("rew","dss", "hgss", "e", false));
-        bookList.addBook(new Book("mvdvsiua","dss", "hgss", "hgdf", false));
-        bookList.addBook(new Book("sd","gsdg", "dffd", "sd", false));
-        bookList.addBook(new Book("vdsf","dss", "fddf", "dc", false));
-        bookList.addBook(new Book("xbvx","dss", "dffd", "asd", false));
-        bookList.addBook(new Book("daafa","sdds", "dffd", "zxc", false));
-        bookList.addBook(new Book("gsd","dfdss", "hgss", "xcs", false));
-        bookList.addBook(new Book("bcxc","dsdsdss", "fddf", "wwer", false));
+//        bookList.addBook(new Book("miua","dss", "hgss", "fsd", false));
+//        bookList.addBook(new Book("rew","dss", "hgss", "e", false));
+//        bookList.addBook(new Book("mvdvsiua","dss", "hgss", "hgdf", false));
+//        bookList.addBook(new Book("sd","gsdg", "dffd", "sd", false));
+//        bookList.addBook(new Book("vdsf","dss", "fddf", "dc", false));
+//        bookList.addBook(new Book("xbvx","dss", "dffd", "asd", false));
+//        bookList.addBook(new Book("daafa","sdds", "dffd", "zxc", false));
+//        bookList.addBook(new Book("gsd","dfdss", "hgss", "xcs", false));
+//        bookList.addBook(new Book("bcxc","dsdsdss", "fddf", "wwer", false));
 //        for( int i=1; i<11; i++){
 //            bookRepository.delete(i);
 //        }
@@ -105,11 +120,25 @@ public class LibraryController {
 //        BookRepository.create(bookList.getCurrentList().get(4));
 //        BookRepository.create(bookList.getCurrentList().get(5));
 
-
-
-
-
     }
+    @FXML
+    private void handleSearchButton(){
+        String filter = searchTextField.getText();
+        bookList.setFilter(filter);
+    }
+
+//    public void addBook(Book book){
+//        bookList.addBook(book);
+//    }
+//    public void updateBook(Book book){
+//        bookList.updateBook(book);
+//    }
+//    public void deleteBook(Book book){
+//        bookList.removeBook(book);
+//    }
+//    public Book readBook(int id){
+//        return bookList.readBook(id);
+//    }
 //    @FXML
 //    private void showAlert(String title, String message) {
 //        Alert alert = new Alert(Alert.AlertType.ERROR);

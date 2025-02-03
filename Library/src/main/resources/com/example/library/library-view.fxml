@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.effect.InnerShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
 
-<VBox alignment="CENTER" prefHeight="404.0" prefWidth="649.0" spacing="10" style="-fx-background-color: #694F8E;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.library.LibraryController">
+<VBox alignment="CENTER" prefHeight="404.0" prefWidth="649.0" spacing="10" style="-fx-background-color: #694F8E;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.library.LibraryController">
    <Pane prefHeight="106.0" prefWidth="650.0" style="-fx-background-color: #694F8E;">
       <children>
          <ImageView blendMode="DARKEN" fitHeight="108.0" fitWidth="122.0" layoutX="30.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
@@ -21,8 +14,8 @@
                <Image url="@Zrzut ekranu 2025-02-01 175314.png" />
             </image>
          </ImageView>
-           <TextField fx:id="titleField" alignment="TOP_CENTER" layoutX="168.0" layoutY="34.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="283.0" promptText="Tytuł książki" style="-fx-background-color: #FFF6DA;" />
-         <Button fx:id="deleteBookButton" layoutX="500.0" layoutY="34.0" style="-fx-background-color: F4D793;" text="Wypożycz">
+           <TextField fx:id="searchTextField" alignment="TOP_CENTER" layoutX="168.0" layoutY="34.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="283.0" promptText="Wyszukaj" style="-fx-background-color: #FFF6DA;" />
+         <Button layoutX="500.0" layoutY="34.0" onAction="#handleSearchButton" style="-fx-background-color: F4D793;" text="Szukaj">
             <effect>
                <InnerShadow height="67.79" radius="32.81" width="65.45">
                   <color>
@@ -46,7 +39,7 @@
         <columns>
             <TableColumn fx:id="titleColumn" prefWidth="250" style="-fx-background-color: #B692C2;" text="Tytuł" />
             <TableColumn fx:id="authorColumn" prefWidth="200" style="-fx-background-color: #B692C2;" text="Autor" />
-         <TableColumn fx:id="amountColumn" prefWidth="198.39998779296877" style="-fx-background-color: #B692C2;" text="Gatunek" />
+         <TableColumn fx:id="genreColumn" prefWidth="198.39998779296877" style="-fx-background-color: #B692C2;" text="Gatunek" />
         </columns>
     </TableView>
 

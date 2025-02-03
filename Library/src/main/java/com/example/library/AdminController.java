@@ -23,15 +23,19 @@ public class AdminController {
         LogInControllerParent = controler;
     }
 
-
-
+//    Book currentBook = new Book();
+//    int currentId;
 
     @FXML
     private TableView<Book> booksTable;
     @FXML
+    private TableColumn<Book, String> idColumn;
+    @FXML
     private TableColumn<Book, String> titleColumn;
     @FXML
     private TableColumn<Book, String> authorColumn;
+
+
     @FXML
     private TableColumn<Book, String> amountColumn;
     private BookRepository bookRepository;
@@ -41,24 +45,39 @@ public class AdminController {
 
     @FXML
     public void initialize() throws IOException, IOException {
+
+        idColumn.setCellValueFactory(cdf -> cdf.getValue().idProperty().asString());
         titleColumn.setCellValueFactory(cdf -> cdf.getValue().titleProperty());
         authorColumn.setCellValueFactory(cdf -> cdf.getValue().authorProperty());
-//        amountColumn.setCellValueFactory(cdf -> cdf.getValue().amountProperty());
+
+
+        bookRepository = new BookRepository();
+        bookList = new BookList(bookRepository);
+        booksTable.setItems(bookList.getCurrentList());
 
 
         //Obsluga table view
         booksTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
-                System.out.println(newSelection.genre);
+
+//                currentBook = obs.getValue();
+//                currentId = newSelection.id.get();
+//                currentBook = (readBook(currentId));
+//                System.out.println(readBook(currentId));
+
+
+
                 Stage stage = new Stage();
                 FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("editbook-view.fxml"));
+                fxmlLoader.setController(new EditBookController(this, obs.getValue(), bookList));
+
                 Scene scene = null;
                 try {
                     scene = new Scene(fxmlLoader.load(), 600, 400);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-//                Edit ctrl = fxmlLoader.getController();
+//                EditBookController ctrl = fxmlLoader.getController();
 //                ctrl.setMainController(this);
                 stage.setTitle("Edytuj książkę");
                 stage.setScene(scene);
@@ -67,12 +86,45 @@ public class AdminController {
         });
 
 
-        bookRepository = new BookRepository();
-        bookList = new BookList(bookRepository);
-        booksTable.setItems(bookList.getCurrentList());
+
+
 
 
     }
+    @FXML
+    private void handleAddBookButton(){
+//                System.out.println(newSelection.genre);
+            Stage stage = new Stage();
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("addbook-view.fxml"));
+            fxmlLoader.setController(new AddBookController(this, bookList));
+            Scene scene = null;
+            try {
+                scene = new Scene(fxmlLoader.load(), 600, 400);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+//            AddBookController ctrl = fxmlLoader.getController();
+//            ctrl.setMainController(this);
+            stage.setTitle("Dodaj książkę");
+            stage.setScene(scene);
+            stage.show();
+
+    }
+//
+//    public void addBook(Book book){
+//        bookList.addBook(book);
+//    }
+//    public void updateBook(Book book){
+//        bookList.updateBook(book);
+//    }
+//    public void deleteBook(Book book){
+//        bookList.removeBook(book);
+//    }
+//    public Book readBook(int id){
+//        return bookList.readBook(id);
+//    }
+
+
 
 
 
