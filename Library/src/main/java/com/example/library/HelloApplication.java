@@ -3,7 +3,9 @@ package com.example.library;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -18,6 +20,8 @@ public class HelloApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 700, 400);
         stage.setTitle("Log in");
         stage.setScene(scene);
+        stage.initStyle(StageStyle.UNIFIED);
+        stage.getIcons().add(new Image("file:C:\\Users\\rafal\\IdeaProjects\\BibliotekaGitHub\\Library\\Library\\src\\main\\resources\\com\\example\\library\\logo2.png"));
         stage.show();
     }
 

@@ -11,7 +11,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.sql.DriverManager;
@@ -69,7 +71,7 @@ public class LibraryController {
         authorColumn.setCellValueFactory(cdf -> cdf.getValue().authorProperty());
         genreColumn.setCellValueFactory(cdf -> cdf.getValue().genreProperty());
         isRentedColumn.setCellValueFactory(cdf -> cdf.getValue().statusLabel());
-        isRentedColumn.setCellFactory(factory -> new ColoredStatusTableCell("-fx-background-color: #B692C2;"));
+        isRentedColumn.setCellFactory(factory -> new ColoredStatusTableCell("-fx-background-color: #B692C2; -fx-font-size: 16px; -fx-font-family: 'Arial';"));
 
         //todo ustawic na autosize/fill ostatnia kolumne cos tego typu
 
@@ -98,6 +100,8 @@ public class LibraryController {
 //                BookController ctrl = fxmlLoader.getController();
 //                ctrl.setMainController(this);
                 stage.setTitle("Informacje o książce");
+                stage.initStyle(StageStyle.UNIFIED);
+                stage.getIcons().add(new Image("file:C:\\Users\\rafal\\IdeaProjects\\BibliotekaGitHub\\Library\\Library\\src\\main\\resources\\com\\example\\library\\logo2.png"));
                 stage.setScene(scene);
                 stage.show();
 
@@ -190,7 +194,10 @@ public class LibraryController {
         }
 //            LibraryController ctrl = fxmlLoader.getController();
 //            ctrl.setMainController(this);     niepotrzebny tutaj parent
+
         stage.setTitle("Log in");
+        stage.initStyle(StageStyle.UNIFIED);
+        stage.getIcons().add(new Image("file:C:\\Users\\rafal\\IdeaProjects\\BibliotekaGitHub\\Library\\Library\\src\\main\\resources\\com\\example\\library\\logo2.png"));
         stage.setScene(scene);
         stage.show();
 
@@ -198,6 +205,8 @@ public class LibraryController {
 
         Stage libraryStage = (Stage) searchTextField.getScene().getWindow();
         libraryStage.close();
+
+        showAlert("Konto","Wylogowano z konta " + username);
     }
 
 //    public void addBook(Book book){
@@ -217,6 +226,9 @@ public class LibraryController {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setContentText(message);
+        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        stage.initStyle(StageStyle.UNIFIED);
+        stage.getIcons().add(new Image("file:C:\\Users\\rafal\\IdeaProjects\\BibliotekaGitHub\\Library\\Library\\src\\main\\resources\\com\\example\\library\\logo2.png"));
         alert.showAndWait();
     }
 }

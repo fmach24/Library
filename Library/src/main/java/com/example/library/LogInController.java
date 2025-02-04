@@ -6,9 +6,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.Stage;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.sql.DriverManager;
@@ -52,6 +54,8 @@ public class LogInController {
 //            LibraryController ctrl = fxmlLoader.getController();
 //            ctrl.setMainController(this);     niepotrzebny tutaj parent
             stage.setTitle("Administracja");
+            stage.initStyle(StageStyle.UNIFIED);
+            stage.getIcons().add(new Image("file:C:\\Users\\rafal\\IdeaProjects\\BibliotekaGitHub\\Library\\Library\\src\\main\\resources\\com\\example\\library\\logo2.png"));
             stage.setScene(scene);
             stage.show();
 
@@ -98,6 +102,8 @@ public class LogInController {
 //            LibraryController ctrl = fxmlLoader.getController();
 //            ctrl.setMainController(this);
             stage.setTitle("Biblioteka Knyszyn");
+            stage.initStyle(StageStyle.UNIFIED);
+            stage.getIcons().add(new Image("file:C:\\Users\\rafal\\IdeaProjects\\BibliotekaGitHub\\Library\\Library\\src\\main\\resources\\com\\example\\library\\logo2.png"));
             stage.setScene(scene);
             stage.show();
 
@@ -113,6 +119,9 @@ public class LogInController {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
         alert.setContentText(message);
+        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        stage.initStyle(StageStyle.UNIFIED);
+        stage.getIcons().add(new Image("file:C:\\Users\\rafal\\IdeaProjects\\BibliotekaGitHub\\Library\\Library\\src\\main\\resources\\com\\example\\library\\logo2.png"));
         alert.showAndWait();
     }
 }

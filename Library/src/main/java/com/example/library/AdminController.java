@@ -10,7 +10,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.sql.DriverManager;
@@ -64,7 +66,7 @@ public class AdminController {
         titleColumn.setCellValueFactory(cdf -> cdf.getValue().titleProperty());
         authorColumn.setCellValueFactory(cdf -> cdf.getValue().authorProperty());
         isRentedColumn.setCellValueFactory(cdf -> cdf.getValue().statusLabel());
-        isRentedColumn.setCellFactory(factory -> new ColoredStatusTableCell("-fx-background-color: #889E73;"));
+        isRentedColumn.setCellFactory(factory -> new ColoredStatusTableCell("-fx-background-color: #F5F5F5; -fx-font-size: 16px; -fx-font-family: 'Arial';"));
 
 
         bookRepository = new BookRepository();
@@ -99,6 +101,8 @@ public class AdminController {
 //                ctrl.setMainController(this);
 
                 stage.setTitle("Edytuj książkę");
+                stage.initStyle(StageStyle.UNIFIED);
+                stage.getIcons().add(new Image("file:C:\\Users\\rafal\\IdeaProjects\\BibliotekaGitHub\\Library\\Library\\src\\main\\resources\\com\\example\\library\\logo2.png"));
                 stage.setScene(scene);
                 stage.show();
 
@@ -146,6 +150,8 @@ public class AdminController {
 //            AddBookController ctrl = fxmlLoader.getController();
 //            ctrl.setMainController(this);
             stage.setTitle("Dodaj książkę");
+            stage.initStyle(StageStyle.UNIFIED);
+            stage.getIcons().add(new Image("file:C:\\Users\\rafal\\IdeaProjects\\BibliotekaGitHub\\Library\\Library\\src\\main\\resources\\com\\example\\library\\logo2.png"));
             stage.setScene(scene);
             stage.show();
 
@@ -161,9 +167,13 @@ public class AdminController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+
 //            LibraryController ctrl = fxmlLoader.getController();
 //            ctrl.setMainController(this);     niepotrzebny tutaj parent
         stage.setTitle("Log in");
+        stage.initStyle(StageStyle.UNIFIED);
+        stage.getIcons().add(new Image("file:C:\\Users\\rafal\\IdeaProjects\\BibliotekaGitHub\\Library\\Library\\src\\main\\resources\\com\\example\\library\\logo2.png"));
         stage.setScene(scene);
         stage.show();
 
@@ -171,6 +181,8 @@ public class AdminController {
 
         Stage libraryStage = (Stage) addBookButton.getScene().getWindow();
         libraryStage.close();
+
+        showAlert("Konto","Wylogowano z konta administratora");
     }
 //
 //    public void addBook(Book book){
@@ -272,13 +284,16 @@ public class AdminController {
 //        }
 //    }
 //
-//    @FXML
-//    private void showAlert(String title, String message) {
-//        Alert alert = new Alert(Alert.AlertType.ERROR);
-//        alert.setTitle(title);
-//        alert.setContentText(message);
-//        alert.showAndWait();
-//    }
+    @FXML
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setContentText(message);
+        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        stage.initStyle(StageStyle.UNIFIED);
+        stage.getIcons().add(new Image("file:C:\\Users\\rafal\\IdeaProjects\\BibliotekaGitHub\\Library\\Library\\src\\main\\resources\\com\\example\\library\\logo2.png"));
+        alert.showAndWait();
+    }
 //
 //    @FXML
 //    private void refresh(){
