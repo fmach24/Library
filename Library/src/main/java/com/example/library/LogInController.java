@@ -101,5 +101,5 @@ public class LogInController {
         stage.getIcons().add(new Image("file:C:\\Users\\rafal\\IdeaProjects\\BibliotekaGitHub\\Library\\Library\\src\\main\\resources\\com\\example\\library\\logo2.png"));
         alert.showAndWait();
     }
-    //t
+    //ts
 }
