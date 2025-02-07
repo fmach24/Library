@@ -25,12 +25,15 @@ import java.util.UUID;
 
 public class LibraryController {
 
-    private LogInController LogInControllerParent;
     private final String username;
 
-    public void setMainController(LogInController controler){
-        LogInControllerParent = controler;
-    }
+
+
+    private LogInController LogInControllerParent;
+
+//    public void setMainController(LogInController controler){
+//        LogInControllerParent = controler;
+//    }
 
     public LibraryController(LogInController loginController, String username) {
         LogInControllerParent = loginController;
@@ -113,7 +116,9 @@ public class LibraryController {
 
         //stworzenie book repository
         bookRepository = new BookRepository();
+
         bookList = new BookList(bookRepository);
+        //podpiecie do table view booklisty
         booksTable.setItems(bookList.getCurrentList());
     }
 

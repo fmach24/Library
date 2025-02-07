@@ -51,6 +51,7 @@ public class BookController {
         authorTextField.setText(currentBook.author.get());
         genreTextField.setText(currentBook.genre.get());
         publisherTextField.setText(currentBook.publisher.get());
+
         //ustawia date oddania
         if(currentBook.isRented.get()) expirationTextField.setText(currentBook.expiration.get().toLocalDate().toString());
         else expirationTextField.setText(null);
@@ -60,7 +61,7 @@ public class BookController {
     private void handleBorrowButton(){
         currentBook.SetBorrow();
         bookList.updateBorrow(currentBook);
-        initialize();
+        refresh();
 //        showAlert("Książka", "Książka została wypożyczona do " + currentBook.expiration.get().toLocalDate().toString());
 
 
@@ -76,7 +77,7 @@ public class BookController {
     private void handleExtendButton(){
         currentBook.Extend();
         bookList.updateBorrow(currentBook);
-        initialize();
+        refresh();
 //        showAlert("Książka", "Książka została przedłużona do " + currentBook.expiration.get().toLocalDate().toString());
 //        Stage addBookStage = (Stage) cancelButton.getScene().getWindow();
 //        addBookStage.close();
@@ -86,7 +87,7 @@ public class BookController {
     private void handleReturnButton(){
         currentBook.SetReturn();
         bookList.updateBorrow(currentBook);
-        initialize();
+        refresh();
 
 //        showAlert("Książka", "Zwrócono książkę");
 //        System.out.println(currentBook.isRented.get());
@@ -103,6 +104,12 @@ public class BookController {
         Stage addBookStage = (Stage) cancelButton.getScene().getWindow();
         addBookStage.close();
 
+    }
+
+    public void refresh() {
+        //ustawia date oddania
+        if(currentBook.isRented.get()) expirationTextField.setText(currentBook.expiration.get().toLocalDate().toString());
+        else expirationTextField.setText(null);
     }
 
 //    @FXML

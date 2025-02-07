@@ -22,9 +22,9 @@ public class AdminController {
 
     private LogInController LogInControllerParent;
 
-    public void setMainController(LogInController controler){
-        LogInControllerParent = controler;
-    }
+//    public void setMainController(LogInController controler){
+//        LogInControllerParent = controler;
+//    }
 
     public AdminController(LogInController loginController) {
         LogInControllerParent = loginController;
@@ -51,9 +51,6 @@ public class AdminController {
     @FXML
     private TextField searchTextField;
 
-
-    @FXML
-    private TableColumn<Book, String> amountColumn;
     private BookRepository bookRepository;
     private BookList bookList;
 

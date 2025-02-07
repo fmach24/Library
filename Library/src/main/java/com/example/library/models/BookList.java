@@ -39,6 +39,7 @@ public class BookList {
 
     public void updateBook(Book book) {
        repository.update(book);
+       this.readBooks();
 //       current.clear();
 //       current.addAll(books);
     }

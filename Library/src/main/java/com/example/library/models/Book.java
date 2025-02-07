@@ -132,6 +132,7 @@ public class Book {
 //        }
         return isRented;
     }
+
     public StringProperty statusLabel() {
 //        StringProperty statusLabel = new SimpleStringProperty();
         if(isRented.get()){
