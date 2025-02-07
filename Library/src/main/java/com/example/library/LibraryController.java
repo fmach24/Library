@@ -16,7 +16,9 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.UUID;
@@ -35,8 +37,6 @@ public class LibraryController {
         this.username = username;
 
     }
-
-
 
 
     @FXML
@@ -111,55 +111,10 @@ public class LibraryController {
             }
         });
 
-
+        //stworzenie book repository
         bookRepository = new BookRepository();
         bookList = new BookList(bookRepository);
         booksTable.setItems(bookList.getCurrentList());
-
-
-
-
-
-
-//        showAlert("Witaj", "Cześć "+ username + "! Witaj w bibliotece Knyszyn");
-
-
-
-
-
-
-
-
-
-//        bookRepository.delete(bookList.getCurrentList().getFirst().id);
-//        Book book1 = new Book("miua","dss", "hgss", "fsd", false);
-//        bookList.addBook(new Book("miua","dss", "hgss", "fsd", false));
-//        bookList.addBook(new Book("rew","dss", "hgss", "e", false));
-//        bookList.addBook(new Book("mvdvsiua","dss", "hgss", "hgdf", false));
-//        bookList.addBook(new Book("sd","gsdg", "dffd", "sd", false));
-//        bookList.addBook(new Book("vdsf","dss", "fddf", "dc", false));
-//        bookList.addBook(new Book("xbvx","dss", "dffd", "asd", false));
-//        bookList.addBook(new Book("daafa","sdds", "dffd", "zxc", false));
-//        bookList.addBook(new Book("gsd","dfdss", "hgss", "xcs", false));
-//        bookList.addBook(new Book("bcxc","dsdsdss", "fddf", "wwer", false));
-//        for( int i=1; i<11; i++){
-//            bookRepository.delete(i);
-//        }
-//        bookList.remove(book1);
-
-//        System.out.println(bookList.getCurrentList());
-
-
-//        book1 = bookList.getCurrentList().get(0);
-//        Book book1 = new Book(UUID.randomUUID(), "s", "s", "s", "2");
-//
-//        BookRepository.create(bookList.getCurrentList().get(0));
-//        BookRepository.create(bookList.getCurrentList().get(1));
-//        BookRepository.create(bookList.getCurrentList().get(2));
-//        BookRepository.create(bookList.getCurrentList().get(3));
-//        BookRepository.create(bookList.getCurrentList().get(4));
-//        BookRepository.create(bookList.getCurrentList().get(5));
-
     }
 
     @FXML
@@ -178,7 +133,6 @@ public class LibraryController {
         }
         bookList.readBooks();
     }
-
 
     @FXML
     private void handleLogOutButton(){
@@ -209,18 +163,6 @@ public class LibraryController {
         showAlert("Konto","Wylogowano z konta " + username);
     }
 
-//    public void addBook(Book book){
-//        bookList.addBook(book);
-//    }
-//    public void updateBook(Book book){
-//        bookList.updateBook(book);
-//    }
-//    public void deleteBook(Book book){
-//        bookList.removeBook(book);
-//    }
-//    public Book readBook(int id){
-//        return bookList.readBook(id);
-//    }
     @FXML
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

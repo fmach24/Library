@@ -35,13 +35,14 @@ public class LogInController {
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
 
+
         if (username.isEmpty() || password.isEmpty()) {
             showAlert("Błąd","Podaj nazwę użytkownika i hasło");
             return;
         }
+
+
         if (username.equals("admin") && password.equals("admin")) {
-
-
             Stage stage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("admin-view.fxml"));
             fxmlLoader.setController(new AdminController(this));
@@ -64,32 +65,8 @@ public class LogInController {
             logInStage.close();
 
 
-
-//
-//            Stage stage = new Stage();
-//            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("admin-view.fxml"));
-//            Scene scene = new Scene(fxmlLoader.load(), 700, 400);
-//            stage.setTitle("Admin");
-//            stage.setScene(scene);
-//            stage.show();
-            //closing login stage
-//            Stage logInStage = (Stage) logInButton.getScene().getWindow();
-//            logInStage.close();
-
-
-
-
         }
         else if (password.equals("student")) {
-//            Stage stage = new Stage();
-//            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("library-view.fxml"));
-//            Scene scene = new Scene(fxmlLoader.load(), 700, 400);
-//            stage.setTitle("Library");
-//            stage.setScene(scene);
-//            LibraryController ctrl = fxmlLoader.getController();
-//            ctrl.setMainController(this);
-
-
             Stage stage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("library-view.fxml"));
             fxmlLoader.setController(new LibraryController(this, username));
@@ -124,4 +101,5 @@ public class LogInController {
         stage.getIcons().add(new Image("file:C:\\Users\\rafal\\IdeaProjects\\BibliotekaGitHub\\Library\\Library\\src\\main\\resources\\com\\example\\library\\logo2.png"));
         alert.showAndWait();
     }
+    //t
 }

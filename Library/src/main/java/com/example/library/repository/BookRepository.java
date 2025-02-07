@@ -157,7 +157,6 @@ public class BookRepository {
         }
     }
 
-
     //TODO DODAC UPDATE DO STANU WYPOZYCZENIA (WYPOZYCZ - ODDAJ) sprawdzic czy dobrze zaimplementowane
     public void updateBorrow(Book book) {
         String sql = "UPDATE Books SET isRented = ?, expiration = ? WHERE id = ?";
@@ -187,8 +186,6 @@ public class BookRepository {
 //        }
 //    }
 
-
-
     public void delete(int id) {
         String sql = "DELETE FROM Books WHERE id = ?";
         try (var conn = DriverManager.getConnection("jdbc:sqlite:my.db");
@@ -199,95 +196,6 @@ public class BookRepository {
             System.out.println(e.getMessage());
         }
     }
-
-
-
-
-//        public void create (Book book){
-//
-//        }
-//        public Book read (int id){
-//            return new Book(UUID.randomUUID(),"s","s","s","2");
-//        }
-//        public List<Book> read (){
-//
-//            return new ArrayList<Book>();
-//        }
-//
-
-//        public void update (Book book){
-//            var url = "jdbc:sqlite:my.db";
-//
-//
-//            StringProperty amount = book.amount;
-////            id = id.toString();
-//
-//
-//            try (Connection conn = DriverManager.getConnection(url)){
-//
-//            }
-//                String sql = "UPDATE INTO Books (id, title, author, genre, amount) VALUES (?,?,?,?,?)";
-//                PreparedStatement stmt = conn.prepareStatement(sql);
-//                stmt.setInt(1, title);
-//                stmt.setString(2, author);
-//                stmt.setString(3, genre);
-//                stmt.setString(4, amount);
-//                stmt.setInt(5, amount);
-//            } catch (SQLException e) {
-//                System.out.println(e.getMessage());
-//            }
-//
-//
-//
-//
-//            try (Connection conn = DriverManager.getConnection(StartApplication.db_url)){
-//
-//                //TODO: make time of rental based on points.
-//                String query = "INSERT INTO book_rental (book_id, user_id, deadline) VALUES (?,?,?)";
-//                PreparedStatement stmt = conn.prepareStatement(sql);
-//                stmt.setInt(1, b.getId());
-//                stmt.setInt(2, user.getId());
-//                stmt.setDate(3, Date.valueOf(deadline));
-//                LocalDate deadline = LocalDate.now().plusDays(LibraryRules.getBorrowPeriodLength(user.getPoints()));
-//                stmt.setDate(3, Date.valueOf(deadline));
-//
-//
-//            }
-
-
-//        public void delete (int id){
-//                var url = "jdbc:sqlite:my.db";
-////                id.toString();
-//                var sql = "DELETE FROM WAREHOUSES WHERE ID = $id";
-//
-//                try (var conn = DriverManager.getConnection(url);
-//                     var stmt = conn.createStatement()) {
-//                    stmt.execute(sql);
-//                } catch (SQLException e) {
-//                    System.out.println(e.getMessage());
-//                }
-//        }
-
-
-
-//        public void dataBase() {
-//                var url = "jdbc:sqlite:my.db";
-//
-//                // SQL statement for creating a new table
-////        var sql = "DELETE FROM WAREHOUSES WHERE NAME = 'test1'";
-//                var sql = "INSERT INTO WAREHOUSES(name,capacity) VALUES('test1', 2*10)";
-//                //     "INSERT INTO WAREHOUSES(name,capacity) VALUES('test1', 2*10)"
-//
-//                try (var conn = DriverManager.getConnection(url);
-//                     var stmt = conn.createStatement()) {
-//                        // create a new table
-//                        stmt.execute(sql);
-//                } catch (SQLException e) {
-//                        System.out.println(e.getMessage());
-//                }
-//
-//        }
-
 }
 
 

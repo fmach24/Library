@@ -85,6 +85,7 @@ public class EditBookController {
 //        Stage addBookStage = (Stage) deleteButton.getScene().getWindow();
 //        addBookStage.close();
     }
+
     @FXML
     private void handleDeleteButton() {
 //        AdminControllerParent.deleteBook(currentBook);
