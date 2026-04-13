@@ -12,13 +12,6 @@ Aplikacja posiada dwa tryby pracy:
 
 Dane przechowywane sa lokalnie w bazie SQLite (`my.db`).
 
-## Zrzuty ekranu
-
-![Logo projektu](Library/src/main/resources/com/example/library/logo.png)
-
-![Ekran aplikacji 1](Library/src/main/resources/com/example/library/Zrzut%20ekranu%202025-02-01%20175314.png)
-
-![Ekran aplikacji 2](Library/src/main/resources/com/example/library/Zrzut%20ekranu%202025-02-02%20141549.png)
 
 ## Funkcjonalnosci
 
