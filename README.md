@@ -66,9 +66,3 @@ Kroki:
 - baza: SQLite (`my.db`),
 - tabela `Books` tworzona jest przy starcie aplikacji,
 - pola: `id`, `title`, `author`, `genre`, `publisher`, `isRented`, `expiration`.
-
-## Znane ograniczenia
-
-- `mvnw` jest obecny, ale repozytorium nie zawiera kompletnego katalogu `.mvn/wrapper`,
-- brak testow automatycznych mimo przygotowanych zaleznosci JUnit,
-- czesc sciezek i danych jest osadzona na stale w kodzie.
